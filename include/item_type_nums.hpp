@@ -12,3 +12,10 @@ enum item_t
 
 
 
+#define SPRITES_GRID_FILENAME "sprites_grid-x.png"
+#define SPRITES_GRID_SPRITE_WIDTH 48
+#define SPRITES_GRID_SPRITE_HEIGHT 48
+#define SPRITES_GRID_SPRITE_SCALING 3
+
+
+

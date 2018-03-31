@@ -8,13 +8,13 @@
 
 
 
-SpriteSheet::SpriteSheet(std::string filename, int sprite_width, int sprite_height, int num_rows, int num_columns, int scale)
+SpriteSheet::SpriteSheet(std::string filename, int sprite_width, int sprite_height, int scale)
    : atlas(Framework::bitmap(filename))
    , sprites()
    , sprite_width(sprite_width)
    , sprite_height(sprite_height)
-   , num_rows(num_rows)
-   , num_columns(num_columns)
+   , num_rows(atlas ? al_get_bitmap_height(atlas) / sprite_height : 0)
+   , num_columns(atlas ? al_get_bitmap_width(atlas) / sprite_width : 0)
    , scale(scale)
 {
    _create_atlas_copy();
