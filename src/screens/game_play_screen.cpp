@@ -3,6 +3,7 @@
 
 #include <screens/game_play_screen.hpp>
 
+#include <framework/screens/gamer_input_screen.hpp>
 #include <models/entities/door_entity.hpp>
 #include <emitters/user_event_emitter.hpp>
 #include <factories/entity_factory.hpp>
@@ -47,41 +48,32 @@ void GamePlayScreen::primary_timer_func()
 
 
 
-void GamePlayScreen::key_down_func()
-{
-   int al_keycode = Framework::current_event->keyboard.keycode;
-
-   state_helper.process_key_down(al_keycode);
-}
-
-
-
-void GamePlayScreen::key_up_func()
-{
-   int al_keycode = Framework::current_event->keyboard.keycode;
-
-   switch (state)
-   {
-   case GAME_PLAY:
-      player_krampus_controller.on_key_up(al_keycode);
-      break;
-   case ENTERING_THROUGH_DOOR:
-      // nothing
-      break;
-   default:
-      break;
-   }
-}
-
-
-
 void GamePlayScreen::user_event_func()
 {
    ALLEGRO_EVENT *event = Framework::current_event;
 
    switch (event->user.type)
    {
-   case ENTER_DOOR_EVENT:
+      case ALLEGRO_EVENT_GAMER_BUTTON_DOWN:
+      {
+         int user_input = event->user.data1;
+         state_helper.process_key_down(user_input);
+         break;
+      }
+      case ALLEGRO_EVENT_GAMER_BUTTON_UP:
+      {
+         switch (state)
+         {
+            case GAME_PLAY:
+            {
+               int user_input = event->user.data1;
+               player_krampus_controller.on_key_up(user_input);
+               break;
+            }
+         }
+         break;
+      }
+      case ENTER_DOOR_EVENT:
       {
          int scene_id = event->user.data1;
          std::string destination_door_name;
@@ -89,19 +81,19 @@ void GamePlayScreen::user_event_func()
          enter_scene(scene_id, destination_door_name[0]);
          break;
       }
-   case OPEN_INVENTORY_SCREEN:
+      case OPEN_INVENTORY_SCREEN:
       {
          inventory_screen.show();
          set_state(INVENTORY_SCREEN);
          break;
       }
-   case CLOSE_INVENTORY_SCREEN:
+      case CLOSE_INVENTORY_SCREEN:
       {
          inventory_screen.hide();
          set_state(GAME_PLAY);
          break;
       }
-   case COLLECT_ITEM_EVENT:
+      case COLLECT_ITEM_EVENT:
       {
          int item_type_int = event->user.data1;
          player_inventory.add_item(item_type_int);
@@ -123,26 +115,26 @@ void GamePlayScreen::user_event_func()
          set_state(ITEM_COLLECTED);
          break;
       }
-   case USE_STONE_OF_DEFIANCE_EVENT:
+      case USE_STONE_OF_DEFIANCE_EVENT:
       {
          set_state(USING_STONE_OF_DEFIANCE);
          break;
       }
-   case INVENTORY_SCREEN__MOVE_CURSOR_UP:
-      inventory_screen.show();
-      break;
-   case INVENTORY_SCREEN__MOVE_CURSOR_DOWN:
-      inventory_screen.move_cursor_down();
-      break;
-   case INVENTORY_SCREEN__MOVE_CURSOR_LEFT:
-      inventory_screen.move_cursor_left();
-      break;
-   case INVENTORY_SCREEN__MOVE_CURSOR_RIGHT:
-      inventory_screen.move_cursor_right();
-      break;
-   case INVENTORY_SCREEN__SELECT_ITEM:
-      inventory_screen.select_item_at_cursor();
-      break;
+      case INVENTORY_SCREEN__MOVE_CURSOR_UP:
+         inventory_screen.show();
+         break;
+      case INVENTORY_SCREEN__MOVE_CURSOR_DOWN:
+         inventory_screen.move_cursor_down();
+         break;
+      case INVENTORY_SCREEN__MOVE_CURSOR_LEFT:
+         inventory_screen.move_cursor_left();
+         break;
+      case INVENTORY_SCREEN__MOVE_CURSOR_RIGHT:
+         inventory_screen.move_cursor_right();
+         break;
+      case INVENTORY_SCREEN__SELECT_ITEM:
+         inventory_screen.select_item_at_cursor();
+         break;
    }
 }
 

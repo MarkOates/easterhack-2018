@@ -3,6 +3,7 @@
 
 #include <helpers/game_play_screen_state_helper.hpp>
 
+#include <framework/screens/gamer_input_screen.hpp>
 #include <emitters/user_event_emitter.hpp>
 #include <factories/dialogue_factory.hpp>
 #include <helpers/scene_collection_helper.hpp>
@@ -21,32 +22,32 @@ GamePlayScreenStateHelper::GamePlayScreenStateHelper(GamePlayScreen *game_play_s
 
 
 
-void GamePlayScreenStateHelper::process_key_down(int al_keycode)
+void GamePlayScreenStateHelper::process_key_down(int input_button)
 {
    switch (game_play_screen->state)
    {
    case GamePlayScreen::GAME_PLAY:
-      if (al_keycode == ALLEGRO_KEY_ESCAPE) UserEventEmitter::emit_event(OPEN_INVENTORY_SCREEN);
+      if (input_button == GAMER_BUTTON_START) UserEventEmitter::emit_event(OPEN_INVENTORY_SCREEN);
       else
       {
-         game_play_screen->player_krampus_controller.on_key_down(al_keycode);
+         game_play_screen->player_krampus_controller.on_key_down(input_button);
       }
       break;
    case GamePlayScreen::ENTERING_THROUGH_DOOR:
       // nothing
       break;
    case GamePlayScreen::INVENTORY_SCREEN:
-      if (al_keycode == ALLEGRO_KEY_UP) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_UP);
-      if (al_keycode == ALLEGRO_KEY_DOWN) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_DOWN);
-      if (al_keycode == ALLEGRO_KEY_LEFT) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_LEFT);
-      if (al_keycode == ALLEGRO_KEY_RIGHT) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_RIGHT);
-      if (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER) UserEventEmitter::emit_event(INVENTORY_SCREEN__SELECT_ITEM);
-      if (al_keycode == ALLEGRO_KEY_ESCAPE) UserEventEmitter::emit_event(CLOSE_INVENTORY_SCREEN);
+      if (input_button == GAMER_BUTTON_UP) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_UP);
+      if (input_button == GAMER_BUTTON_DOWN) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_DOWN);
+      if (input_button == GAMER_BUTTON_LEFT) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_LEFT);
+      if (input_button == GAMER_BUTTON_RIGHT) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_RIGHT);
+      if (input_button == GAMER_BUTTON_A || input_button == GAMER_BUTTON_START) UserEventEmitter::emit_event(INVENTORY_SCREEN__SELECT_ITEM);
+      if (input_button == GAMER_BUTTON_START) UserEventEmitter::emit_event(CLOSE_INVENTORY_SCREEN);
       break;
    case GamePlayScreen::ITEM_COLLECTED:
        // can only close dialogue after a delay
       if (_can_bypass_dialogue()
-         && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
+         && (input_button == GAMER_BUTTON_A || input_button == GAMER_BUTTON_START))
       {
          SceneCollectionHelper collections(game_play_screen->scene);
          KrampusEntity *krampus = collections.get_krampus();
@@ -59,7 +60,7 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
    case GamePlayScreen::GAME_LOST:
        // can only close dialogue after a delay
       if (_can_bypass_dialogue()
-         && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
+         && (input_button == GAMER_BUTTON_A || input_button == GAMER_BUTTON_START))
       {
          UserEventEmitter::emit_event(START_TITLE_SCREEN);
       }
@@ -67,7 +68,7 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
    case GamePlayScreen::GAME_WON:
        // can only close dialogue after a delay
       if (_can_bypass_dialogue()
-         && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
+         && (input_button == GAMER_BUTTON_A || input_button == GAMER_BUTTON_START))
       {
          UserEventEmitter::emit_event(START_CLOSING_STORYBOARD_SCREEN);
       }
