@@ -4,7 +4,7 @@
 #include <screens/game_play_screen.h>
 
 //#include <framework/allegro_flare.h>
-#include <entities/door_entity.h>
+#include <models/entities/door_entity.h>
 #include <emitters/user_event_emitter.h>
 #include <factories/entity_factory.h>
 #include <factories/scene_factory.h>

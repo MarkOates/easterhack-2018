@@ -1,7 +1,7 @@
 
 
 
-#include <entities/krampus_entity.h>
+#include <models/entities/krampus_entity.h>
 
 #include <emitters/user_event_emitter.h>
 #include <factories/entity_factory.h>

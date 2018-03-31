@@ -4,7 +4,7 @@
 
 #include <framework/display.h>
 #include <framework/motion.h>
-#include <entities/entity_base.h>
+#include <models/entities/entity_base.h>
 
 
 

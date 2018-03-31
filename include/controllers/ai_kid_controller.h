@@ -2,7 +2,7 @@
 
 
 
-#include <entities/kid_entity.h>
+#include <models/entities/kid_entity.h>
 
 
 

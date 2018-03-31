@@ -4,10 +4,10 @@
 #include <helpers/scene_collision_helper.h>
 
 #include <emitters/user_event_emitter.h>
-#include <entities/damage_zone_entity.h>
-#include <entities/entity_base.h>
-#include <entities/kid_entity.h>
-#include <entities/krampus_entity.h>
+#include <models/entities/damage_zone_entity.h>
+#include <models/entities/entity_base.h>
+#include <models/entities/kid_entity.h>
+#include <models/entities/krampus_entity.h>
 #include <helpers/scene_collection_helper.h>
 #include <user_events.h>
 

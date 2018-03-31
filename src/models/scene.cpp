@@ -1,7 +1,7 @@
 
 
 
-#include <entities/entity_base.h>
+#include <models/entities/entity_base.h>
 #include <helpers/scene_collection_helper.h>
 #include <helpers/scene_collision_helper.h>
 #include <models/scene.h>

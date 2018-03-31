@@ -2,12 +2,12 @@
 
 
 
-#include <entities/damage_zone_entity.h>
-#include <entities/door_entity.h>
-#include <entities/entity_base.h>
-#include <entities/item_entity.h>
-#include <entities/kid_entity.h>
-#include <entities/krampus_entity.h>
+#include <models/entities/damage_zone_entity.h>
+#include <models/entities/door_entity.h>
+#include <models/entities/entity_base.h>
+#include <models/entities/item_entity.h>
+#include <models/entities/kid_entity.h>
+#include <models/entities/krampus_entity.h>
 #include <models/scene.h>
 
 

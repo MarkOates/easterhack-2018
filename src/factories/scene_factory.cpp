@@ -3,8 +3,8 @@
 
 #include <factories/scene_factory.h>
 
+#include <models/entities/entity_base.h>
 #include <factories/entity_factory.h>
-#include <entities/entity_base.h>
 
 
 

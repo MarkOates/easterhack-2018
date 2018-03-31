@@ -2,7 +2,7 @@
 
 
 
-#include <entities/kid_entity.h>
+#include <models/entities/kid_entity.h>
 #include <generators/kid_name_generator.h>
 #include <string>
 #include <vector>

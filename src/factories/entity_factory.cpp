@@ -4,11 +4,11 @@
 #include <framework/framework.h>
 #include <framework/image_processing.h>
 #include <factories/entity_factory.h>
-#include <entities/background_entity.h>
-#include <entities/door_entity.h>
-#include <entities/damage_zone_entity.h>
-#include <entities/item_entity.h>
-#include <entities/krampus_entity.h>
+#include <models/entities/background_entity.h>
+#include <models/entities/door_entity.h>
+#include <models/entities/damage_zone_entity.h>
+#include <models/entities/item_entity.h>
+#include <models/entities/krampus_entity.h>
 #include <item_type_nums.h>
 
 

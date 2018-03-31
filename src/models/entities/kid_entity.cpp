@@ -1,7 +1,7 @@
 
 
 
-#include <entities/kid_entity.h>
+#include <models/entities/kid_entity.h>
 
 #include <emitters/user_event_emitter.h>
 #include <cmath>

@@ -5,8 +5,8 @@
 #include <sprite_sheet.h>
 
 #include <framework/shader.h>
-#include <entities/entity_base.h>
-#include <entities/kid_entity.h>
+#include <models/entities/entity_base.h>
+#include <models/entities/kid_entity.h>
 
 
 
