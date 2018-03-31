@@ -28,6 +28,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
    , player_inventory()
    , naughty_list()
    , hud(&player_inventory, &naughty_list)
+   , inventory_screen(&player_inventory, display)
    , state_helper(this)
    , camera(display, nullptr)
    , _item_recently_collected(0)
@@ -88,6 +89,18 @@ void GamePlayScreen::user_event_func()
          enter_scene(scene_id, destination_door_name[0]);
          break;
       }
+   case OPEN_INVENTORY_SCREEN:
+      {
+         inventory_screen.show();
+         set_state(INVENTORY_SCREEN);
+         break;
+      }
+   case CLOSE_INVENTORY_SCREEN:
+      {
+         inventory_screen.hide();
+         set_state(GAME_PLAY);
+         break;
+      }
    case COLLECT_ITEM_EVENT:
       {
          int item_type_int = event->user.data1;
@@ -115,6 +128,21 @@ void GamePlayScreen::user_event_func()
          set_state(USING_STONE_OF_DEFIANCE);
          break;
       }
+   case INVENTORY_SCREEN__MOVE_CURSOR_UP:
+      inventory_screen.show();
+      break;
+   case INVENTORY_SCREEN__MOVE_CURSOR_DOWN:
+      inventory_screen.move_cursor_down();
+      break;
+   case INVENTORY_SCREEN__MOVE_CURSOR_LEFT:
+      inventory_screen.move_cursor_left();
+      break;
+   case INVENTORY_SCREEN__MOVE_CURSOR_RIGHT:
+      inventory_screen.move_cursor_right();
+      break;
+   case INVENTORY_SCREEN__SELECT_ITEM:
+      inventory_screen.select_item_at_cursor();
+      break;
    }
 }
 

@@ -2,10 +2,20 @@
 
 
 #include <framework/motion.hpp>
+#include <render_components/inventory_screen_render_component.hpp>
 
 
 class Inventory;
 class Display;
+
+
+#define INVENTORY_SCREEN__SHOW ALLEGRO_GET_EVENT_TYPE('N','v','S','h')
+#define INVENTORY_SCREEN__HIDE ALLEGRO_GET_EVENT_TYPE('N','v','S','h')
+#define INVENTORY_SCREEN__MOVE_CURSOR_UP ALLEGRO_GET_EVENT_TYPE('N','v','C','U')
+#define INVENTORY_SCREEN__MOVE_CURSOR_DOWN ALLEGRO_GET_EVENT_TYPE('N','v','C','D')
+#define INVENTORY_SCREEN__MOVE_CURSOR_LEFT ALLEGRO_GET_EVENT_TYPE('N','v','C','L')
+#define INVENTORY_SCREEN__MOVE_CURSOR_RIGHT ALLEGRO_GET_EVENT_TYPE('N','v','C','R')
+#define INVENTORY_SCREEN__SELECT_ITEM ALLEGRO_GET_EVENT_TYPE('N','v','S','I')
 
 
 class InventoryScreen // (not actually a "Screen" in the framework sense)
@@ -17,9 +27,10 @@ private:
    int rows, columns;
    int cursor_x, cursor_y;
    int selector_x, selector_y;
+   InventoryScreenRenderComponent inventory_screen_render_component;
 
 public:
-   InventoryScreen(Inventory *inventory);
+   InventoryScreen(Inventory *inventory, Display *display);
    ~InventoryScreen();
 
    int get_selected_item();

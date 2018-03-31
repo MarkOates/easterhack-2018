@@ -2,13 +2,16 @@
 
 
 #include <framework/display.hpp>
+#include <emitters/user_event_emitter.hpp>
 #include <models/inventory.hpp>
 #include <models/inventory_screen.hpp>
 #include <render_components/inventory_screen_render_component.hpp>
+#include <music_track_nums.hpp>
+#include <user_events.hpp>
 
 
 
-InventoryScreen::InventoryScreen(Inventory *inventory)
+InventoryScreen::InventoryScreen(Inventory *inventory, Display *display)
    : inventory(inventory)
    , motion()
    , display_counter(0)
@@ -18,7 +21,9 @@ InventoryScreen::InventoryScreen(Inventory *inventory)
    , cursor_y(0)
    , selector_x(0)
    , selector_y(0)
-{}
+   , inventory_screen_render_component(this, display)
+{
+}
 
 
 
@@ -37,6 +42,7 @@ int InventoryScreen::get_selected_item()
 
 void InventoryScreen::show()
 {
+   UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, WIN_CHEER_SOUND_EFFECT);
    motion.cmove_to(&display_counter, 1.0, 1.0);
 }
 
@@ -94,7 +100,7 @@ void InventoryScreen::update(float time_now)
 
 void InventoryScreen::draw(Display *display)
 {
-   InventoryScreenRenderComponent inventory_screen_render_component(this);
+   inventory_screen_render_component.draw();
 }
 
 

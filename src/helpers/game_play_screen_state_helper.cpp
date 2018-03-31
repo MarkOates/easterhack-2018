@@ -26,10 +26,22 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
    switch (game_play_screen->state)
    {
    case GamePlayScreen::GAME_PLAY:
-      game_play_screen->player_krampus_controller.on_key_down(al_keycode);
+      if (al_keycode == ALLEGRO_KEY_ESCAPE) UserEventEmitter::emit_event(OPEN_INVENTORY_SCREEN);
+      else
+      {
+         game_play_screen->player_krampus_controller.on_key_down(al_keycode);
+      }
       break;
    case GamePlayScreen::ENTERING_THROUGH_DOOR:
       // nothing
+      break;
+   case GamePlayScreen::INVENTORY_SCREEN:
+      if (al_keycode == ALLEGRO_KEY_UP) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_UP);
+      if (al_keycode == ALLEGRO_KEY_DOWN) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_DOWN);
+      if (al_keycode == ALLEGRO_KEY_LEFT) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_LEFT);
+      if (al_keycode == ALLEGRO_KEY_RIGHT) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_RIGHT);
+      if (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER) UserEventEmitter::emit_event(INVENTORY_SCREEN__SELECT_ITEM);
+      if (al_keycode == ALLEGRO_KEY_ESCAPE) UserEventEmitter::emit_event(CLOSE_INVENTORY_SCREEN);
       break;
    case GamePlayScreen::ITEM_COLLECTED:
        // can only close dialogue after a delay
@@ -75,6 +87,9 @@ void GamePlayScreenStateHelper::set_state(int new_state)
    switch (game_play_screen->state)
    {
    case GamePlayScreen::GAME_PLAY:
+      game_play_screen->hud.set_to_game_play_mode();
+      break;
+   case GamePlayScreen::INVENTORY_SCREEN:
       game_play_screen->hud.set_to_game_play_mode();
       break;
    case GamePlayScreen::ITEM_COLLECTED:
@@ -190,6 +205,9 @@ void GamePlayScreenStateHelper::update_state()
 
    // always update the hud, regardless of state
    game_play_screen->hud.set_values(__dirty_player_health, 10);
+
+   // always update the inventory screen, regardless of state
+   game_play_screen->inventory_screen.update(Framework::time_now);
 }
 
 
@@ -203,6 +221,12 @@ void GamePlayScreenStateHelper::draw_state()
    case GamePlayScreen::GAME_PLAY:
       {
          if (game_play_screen->scene) draw_scene_with_camera();
+         break;
+      }
+   case GamePlayScreen::INVENTORY_SCREEN:
+      {
+         if (game_play_screen->scene) draw_scene_with_camera();
+         game_play_screen->inventory_screen.draw(game_play_screen->display);
          break;
       }
    case GamePlayScreen::ITEM_COLLECTED:

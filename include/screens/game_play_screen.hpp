@@ -10,6 +10,7 @@
 #include <models/camera.hpp>
 #include <models/hud.hpp>
 #include <models/inventory.hpp>
+#include <models/inventory_screen.hpp>
 #include <models/naughty_list.hpp>
 #include <models/scene.hpp>
 
@@ -27,6 +28,7 @@ private:
       GAME_WON,
       PAUSED,
       ITEM_COLLECTED,
+      INVENTORY_SCREEN,
       USING_STONE_OF_DEFIANCE,
       ENTERING_THROUGH_DOOR,
       BOSS_FIGHT_WARM_UP,
@@ -40,6 +42,7 @@ private:
    Inventory player_inventory;
    NaughtyList naughty_list;
    HUD hud;
+   InventoryScreen inventory_screen;
    GamePlayScreenStateHelper state_helper;
    Camera camera;
 
