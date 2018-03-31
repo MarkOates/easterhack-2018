@@ -30,6 +30,7 @@ bin/krampushack: programs/krampushack.cpp $(OBJECTS)
 
 
 obj/%.o: src/%.cpp
+	@mkdir -p $(@D)
 	g++ -c -std=gnu++11 $< -o $@ -I$(ALLEGRO_DIR)/include -I./include
 
 
