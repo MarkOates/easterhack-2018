@@ -3,7 +3,6 @@
 
 #include <screens/game_play_screen.hpp>
 
-//#include <framework/allegro_flare.h>
 #include <models/entities/door_entity.hpp>
 #include <emitters/user_event_emitter.hpp>
 #include <factories/entity_factory.hpp>
