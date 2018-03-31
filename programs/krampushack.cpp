@@ -34,6 +34,12 @@ public:
 
       switch (event->user.type)
       {
+      case ALLEGRO_EVENT_GAMER_BUTTON_UP:
+         std::cout << "Button RELEASED: " << event->user.data1 << " - " << gamer_input_screen. get_button_name((button_t)event->user.data1) << std::endl;
+         break;
+      case ALLEGRO_EVENT_GAMER_BUTTON_DOWN:
+         std::cout << "Button RELEASED: " << event->user.data1 << " - " << gamer_input_screen. get_button_name((button_t)event->user.data1) << std::endl;
+         break;
       case START_TITLE_SCREEN:
          if (current_screen) delete current_screen;
          current_screen = new TitleScreen(display);

@@ -103,10 +103,10 @@ void GamerInputScreen::setup_default_keyboard_mapping_for_ARROW_KEYS()
 
 void GamerInputScreen::setup_default_joystick_mapping_for_LOGITECH_RUMBLEPAD_2()
 {
-   button_up_joystick_buttonmap = -1;
-   button_down_joystick_buttonmap = -1;
-   button_left_joystick_buttonmap = -1;
-   button_right_joystick_buttonmap = -1;
+   button_up_joystick_buttonmap = 999;
+   button_down_joystick_buttonmap = 999;
+   button_left_joystick_buttonmap = 999;
+   button_right_joystick_buttonmap = 999;
    button_start_joystick_buttonmap = 9;
    button_back_joystick_buttonmap = 8;
    button_a_joystick_buttonmap = 0;
@@ -119,13 +119,13 @@ void GamerInputScreen::setup_default_joystick_mapping_for_LOGITECH_RUMBLEPAD_2()
 
 void GamerInputScreen::setup_default_joystick_mapping_for_XBOX_360_CONTROLLER()
 {
-   button_up_joystick_buttonmap = -1;
-   button_down_joystick_buttonmap = -1;
-   button_left_joystick_buttonmap = -1;
-   button_right_joystick_buttonmap = -1;
-   button_start_joystick_buttonmap = 7;
+   button_up_joystick_buttonmap = 999;
+   button_down_joystick_buttonmap = 999;
+   button_left_joystick_buttonmap = 999;
+   button_right_joystick_buttonmap = 999;
+   button_start_joystick_buttonmap = 11;
    button_back_joystick_buttonmap = 6;
-   button_a_joystick_buttonmap = 2;
+   button_a_joystick_buttonmap = 3;
    button_b_joystick_buttonmap = 0;
    button_c_joystick_buttonmap = 1;
 }
@@ -219,6 +219,8 @@ void GamerInputScreen::joy_axis_func()
 
 void GamerInputScreen::joy_button_down_func()
 {
+   std::cout << "GamerInputScreen::joy_button_down_func(): " << Framework::current_event->joystick.button << std::endl;
+
    if (Framework::current_event->joystick.button == button_up_joystick_buttonmap) emit_gamer_button_down(GAMER_BUTTON_UP);
    else if (Framework::current_event->joystick.button == button_down_joystick_buttonmap) emit_gamer_button_down(GAMER_BUTTON_DOWN);
    else if (Framework::current_event->joystick.button == button_left_joystick_buttonmap) emit_gamer_button_down(GAMER_BUTTON_LEFT);
@@ -235,6 +237,8 @@ void GamerInputScreen::joy_button_down_func()
 
 void GamerInputScreen::joy_button_up_func()
 {
+   std::cout << "GamerInputScreen::joy_button_up_func(): " << Framework::current_event->joystick.button << std::endl;
+
    if (Framework::current_event->joystick.button == button_up_joystick_buttonmap) emit_gamer_button_up(GAMER_BUTTON_UP);
    else if (Framework::current_event->joystick.button == button_down_joystick_buttonmap) emit_gamer_button_up(GAMER_BUTTON_DOWN);
    else if (Framework::current_event->joystick.button == button_left_joystick_buttonmap) emit_gamer_button_up(GAMER_BUTTON_LEFT);
