@@ -8,6 +8,7 @@
 
 
 
+#define MENU_OPTION_QUICK_START "quick start"
 #define MENU_OPTION_START "start"
 #define MENU_OPTION_EXIT "exit"
 
@@ -19,7 +20,7 @@ TitleScreen::TitleScreen(Display *display)
    , menu_cursor_pos(0)
    , title(TextObject("The Krampus"))
    , title2(TextObject("Christmas Calamity"))
-   , menu_items({TextObject(MENU_OPTION_START), TextObject(MENU_OPTION_EXIT)})
+   , menu_items({TextObject(MENU_OPTION_QUICK_START), TextObject(MENU_OPTION_START), TextObject(MENU_OPTION_EXIT)})
    , state(SHOWING_TITLE)
 {
    ALLEGRO_FONT *font = fonts["ChronoTrigger.ttf 60"];
@@ -120,8 +121,12 @@ void TitleScreen::select_option_action()
 
    if (selected_menu_str == MENU_OPTION_START)
       UserEventEmitter::emit_event(START_INTRO_STORYBOARD_SCREEN);
+   if (selected_menu_str == MENU_OPTION_QUICK_START)
+      UserEventEmitter::emit_event(START_GAME_EVENT);
    else if (selected_menu_str == MENU_OPTION_EXIT)
       UserEventEmitter::emit_event(QUIT_GAME_EVENT);
+   else
+      throw std::runtime_error("TitleScreen::select_option_action(), menu option not found");
 }
 
 
