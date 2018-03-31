@@ -1,6 +1,7 @@
 
 
 
+#include <framework/screens/gamer_input_screen.hpp>
 #include <framework/framework.hpp>
 #include <screens/title_screen.hpp>
 #include <emitters/user_event_emitter.hpp>
@@ -69,19 +70,29 @@ void TitleScreen::primary_timer_func()
 
 
 
-void TitleScreen::key_down_func()
+void TitleScreen::user_event_func()
 {
-   switch(Framework::current_event->keyboard.keycode)
+   ALLEGRO_USER_EVENT &user_event = Framework::current_event->user;
+   switch(user_event.type)
    {
-   case ALLEGRO_KEY_UP:
-      cursor_up_action();
-      break;
-   case ALLEGRO_KEY_DOWN:
-      cursor_down_action();
-      break;
-   case ALLEGRO_KEY_ENTER:
-   case ALLEGRO_KEY_SPACE:
-      select_option_action();
+   case ALLEGRO_EVENT_GAMER_BUTTON_DOWN:
+      {
+         int input_button = user_event.data1;
+         std::cout << "TitleScreen::user_event_func() button " << user_event.data1 << std::endl;
+         switch (input_button)
+         {
+         case GAMER_BUTTON_UP:
+            cursor_up_action();
+            break;
+         case GAMER_BUTTON_DOWN:
+            cursor_down_action();
+            break;
+         case GAMER_BUTTON_START:
+         case GAMER_BUTTON_A:
+            select_option_action();
+            break;
+         }
+      }
       break;
    }
 }

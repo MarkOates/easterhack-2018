@@ -27,7 +27,7 @@ public:
    TitleScreen(Display *display);
 
    void primary_timer_func() override;
-   void key_down_func() override;
+   void user_event_func() override;
 
    void cursor_up_action();
    void cursor_down_action();
