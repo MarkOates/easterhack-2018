@@ -17,7 +17,6 @@ private:
    Sound hurt_sound_effect;
    Sound tada_sound_effect;
    Sound win_cheer_sound_effect;
-   Sound fail_moan_sound_effect;
    Sound strong_punch_sound_effect;
    int current_music_track_num;
 

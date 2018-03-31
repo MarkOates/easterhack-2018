@@ -42,7 +42,7 @@ int InventoryScreen::get_selected_item()
 
 void InventoryScreen::show()
 {
-   UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, WIN_CHEER_SOUND_EFFECT);
+   UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, 0, (intptr_t)(new std::string(FAIL_MOAN_SOUND_EFFECT)));
    motion.cmove_to(&display_counter, 1.0, 1.0);
 }
 

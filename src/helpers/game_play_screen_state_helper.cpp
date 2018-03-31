@@ -119,7 +119,7 @@ void GamePlayScreenStateHelper::set_state(int new_state)
       }
       break;
    case GamePlayScreen::GAME_LOST:
-      UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, FAIL_MOAN_SOUND_EFFECT);
+      UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, 0, (intptr_t)(new std::string(FAIL_MOAN_SOUND_EFFECT)));
       game_play_screen->camera.set_overlay_color(color::color(color::red, 0.3));
       game_play_screen->camera.zoom_to(0.8, 2.2);
       game_play_screen->camera.tilt_to(random_bool() ? 0.03 : -0.03, 2.0);

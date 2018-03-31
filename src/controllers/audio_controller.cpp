@@ -15,7 +15,6 @@ AudioController::AudioController()
    , hurt_sound_effect(Framework::sample("217192__rt759__game-voice-3.wav"))
    , tada_sound_effect(Framework::sample("tada.ogg"))
    , win_cheer_sound_effect(Framework::sample("win_cheer.ogg"))
-   , fail_moan_sound_effect(Framework::sample("fail_moan.ogg"))
    , strong_punch_sound_effect(Framework::sample("strong_punch.ogg"))
    , current_music_track_num(-1)
    , sound_effects()
@@ -43,7 +42,6 @@ void AudioController::stop_all()
    hurt_sound_effect.stop();
    tada_sound_effect.stop();
    win_cheer_sound_effect.stop();
-   fail_moan_sound_effect.stop();
    strong_punch_sound_effect.stop();
 }
 
@@ -125,9 +123,6 @@ void AudioController::play_sound_effect_by_id(int track_id)
       break;
    case WIN_CHEER_SOUND_EFFECT:
       win_cheer_sound_effect.play();
-      break;
-   case FAIL_MOAN_SOUND_EFFECT:
-      fail_moan_sound_effect.play();
       break;
    case TADA_SOUND_EFFECT:
       tada_sound_effect.play();

@@ -10,10 +10,13 @@ enum music_track_t
 
    HURT_SOUND_EFFECT,
    WIN_CHEER_SOUND_EFFECT,
-   FAIL_MOAN_SOUND_EFFECT,
    STRONG_PUNCH_SOUND_EFFECT,
    TADA_SOUND_EFFECT
 };
+
+
+
+#define FAIL_MOAN_SOUND_EFFECT "menu/menu_open.wav"
 
 
 
