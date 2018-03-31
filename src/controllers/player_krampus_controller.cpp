@@ -3,6 +3,7 @@
 
 #include <controllers/player_krampus_controller.hpp>
 
+#include <framework/screens/gamer_input_screen.hpp>
 #include <framework/useful.hpp> // for key_pressed()
 
 
@@ -27,30 +28,30 @@ bool PlayerKrampusController::has_a_krampus()
 
 
 
-void PlayerKrampusController::on_key_down(int al_keycode)
+void PlayerKrampusController::on_key_down(int input_button)
 {
    if (!has_a_krampus()) return;
 
-   switch(al_keycode)
+   switch(input_button)
    {
-   case ALLEGRO_KEY_SPACE: krampus->attack(); break;
-   case ALLEGRO_KEY_R: krampus->use_stone_of_defiance(); break;
+   case GAMER_BUTTON_A: krampus->attack(); break;
+   case GAMER_BUTTON_C: krampus->use_stone_of_defiance(); break;
    default: break;
    }
 }
 
 
 
-void PlayerKrampusController::on_key_up(int al_keycode)
+void PlayerKrampusController::on_key_up(int input_button)
 {
    if (!has_a_krampus()) return;
 
-   switch(al_keycode)
+   switch(input_button)
    {
-   case ALLEGRO_KEY_UP: krampus->stand_still(); break;
-   case ALLEGRO_KEY_DOWN: krampus->stand_still(); break;
-   case ALLEGRO_KEY_RIGHT: krampus->stand_still(); break;
-   case ALLEGRO_KEY_LEFT: krampus->stand_still(); break;
+   case GAMER_BUTTON_UP: krampus->stand_still(); break;
+   case GAMER_BUTTON_DOWN: krampus->stand_still(); break;
+   case GAMER_BUTTON_RIGHT: krampus->stand_still(); break;
+   case GAMER_BUTTON_LEFT: krampus->stand_still(); break;
    default: break;
    }
 }
