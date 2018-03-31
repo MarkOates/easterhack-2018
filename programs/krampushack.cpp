@@ -51,7 +51,7 @@ public:
          break;
       case START_GAME_EVENT:
          delete current_screen;
-         current_screen = new GamePlayScreen(display);
+         current_screen = new GamePlayScreen(display, &gamer_input_screen);
          break;
       case PLAY_MUSIC_TRACK:
          {

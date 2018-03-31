@@ -142,7 +142,7 @@ void GamePlayScreenStateHelper::set_state(int new_state)
 
 
 
-void GamePlayScreenStateHelper::update_state()
+void GamePlayScreenStateHelper::update_state(GamerInputScreen *gamer_input_screen)
 {
    float previous_state_counter = state_counter;
    state_counter += 1.0 / 60.0;
@@ -151,7 +151,7 @@ void GamePlayScreenStateHelper::update_state()
    switch (game_play_screen->state)
    {
    case GamePlayScreen::GAME_PLAY:
-      game_play_screen->player_krampus_controller.update_polled_keyboard_input();
+      game_play_screen->player_krampus_controller.update_polled_keyboard_input(gamer_input_screen);
       update_scene();
       check_for_win_or_loss_condition();
       break;

@@ -45,6 +45,7 @@ private:
    InventoryScreen inventory_screen;
    GamePlayScreenStateHelper state_helper;
    Camera camera;
+   GamerInputScreen *gamer_input_screen;
 
    friend class GamePlayScreenStateHelper;
 
@@ -52,12 +53,12 @@ private:
    void _destroy_ai_kid_controller_for(KidEntity *kid);
 
 public:
-   GamePlayScreen(Display *display);
+   GamePlayScreen(Display *display, GamerInputScreen *gamer_input_screen);
 
    void primary_timer_func() override;
    void user_event_func() override;
 
-   void update();
+   void update(GamerInputScreen *gamer_input_screen);
    void draw();
 
    void set_state(state_t new_state);

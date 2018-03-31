@@ -4,7 +4,6 @@
 #include <controllers/player_krampus_controller.hpp>
 
 #include <framework/screens/gamer_input_screen.hpp>
-#include <framework/useful.hpp> // for key_pressed()
 
 
 
@@ -58,14 +57,16 @@ void PlayerKrampusController::on_key_up(int input_button)
 
 
 
-void PlayerKrampusController::update_polled_keyboard_input()
+void PlayerKrampusController::update_polled_keyboard_input(GamerInputScreen *gamer_input_screen)
 {
+   if (!gamer_input_screen) throw std::runtime_error("PlayerKrampusController::update_polled_keyboard_input() cannot is_pressed() on a nullptr gamer_input_screen");
+
    if (krampus->is_idle())
    {
-      if (key_pressed(ALLEGRO_KEY_RIGHT)) krampus->walk_right();
-      if (key_pressed(ALLEGRO_KEY_LEFT)) krampus->walk_left();
-      if (key_pressed(ALLEGRO_KEY_UP)) krampus->walk_up();
-      if (key_pressed(ALLEGRO_KEY_DOWN)) krampus->walk_down();
+      if (gamer_input_screen->is_pressed(GAMER_BUTTON_RIGHT)) krampus->walk_right();
+      if (gamer_input_screen->is_pressed(GAMER_BUTTON_LEFT)) krampus->walk_left();
+      if (gamer_input_screen->is_pressed(GAMER_BUTTON_UP)) krampus->walk_up();
+      if (gamer_input_screen->is_pressed(GAMER_BUTTON_DOWN)) krampus->walk_down();
    }
 }
 

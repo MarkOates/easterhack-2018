@@ -1,8 +1,9 @@
 #pragma once
 
 
-
 class GamePlayScreen;
+class GamerInputScreen;
+
 
 class GamePlayScreenStateHelper
 {
@@ -16,7 +17,7 @@ public:
 
    void process_key_down(int input_button);
    void set_state(int new_state);
-   void update_state();
+   void update_state(GamerInputScreen *gamer_input_screen);
    void draw_state();
 
    void update_scene();

@@ -20,7 +20,7 @@
 
 
 
-GamePlayScreen::GamePlayScreen(Display *display)
+GamePlayScreen::GamePlayScreen(Display *display, GamerInputScreen *gamer_input_screen)
    : Screen(display)
    , scene(nullptr)
    , state(NONE)
@@ -33,6 +33,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
    , state_helper(this)
    , camera(display, nullptr)
    , _item_recently_collected(0)
+   , gamer_input_screen(gamer_input_screen)
 {
    enter_scene(START_SCENE_ID);
    set_state(GAME_PLAY);
@@ -42,7 +43,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
 
 void GamePlayScreen::primary_timer_func()
 {
-   update();
+   update(gamer_input_screen);
    draw();
 }
 
@@ -70,6 +71,7 @@ void GamePlayScreen::user_event_func()
                player_krampus_controller.on_key_up(user_input);
                break;
             }
+            default: break;
          }
          break;
       }
@@ -140,9 +142,9 @@ void GamePlayScreen::user_event_func()
 
 
 
-void GamePlayScreen::update()
+void GamePlayScreen::update(GamerInputScreen *gamer_input_screen)
 {
-   state_helper.update_state();
+   state_helper.update_state(gamer_input_screen);
 }
 
 

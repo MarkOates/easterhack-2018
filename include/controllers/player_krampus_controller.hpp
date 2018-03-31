@@ -6,6 +6,10 @@
 
 
 
+class GamerInputScreen;
+
+
+
 class PlayerKrampusController
 {
 private:
@@ -20,7 +24,7 @@ public:
    void on_key_down(int input_button);
    void on_key_up(int input_button);
 
-   void update_polled_keyboard_input();
+   void update_polled_keyboard_input(GamerInputScreen *gamer_input_screen);
 };
 
 
