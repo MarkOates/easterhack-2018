@@ -2,8 +2,8 @@
 
 
 
-#include <models/entities/kid_entity.h>
-#include <generators/kid_name_generator.h>
+#include <models/entities/kid_entity.hpp>
+#include <generators/kid_name_generator.hpp>
 #include <string>
 #include <vector>
 

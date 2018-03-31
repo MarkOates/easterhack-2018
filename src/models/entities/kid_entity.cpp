@@ -1,12 +1,12 @@
 
 
 
-#include <models/entities/kid_entity.h>
+#include <models/entities/kid_entity.hpp>
 
-#include <emitters/user_event_emitter.h>
+#include <emitters/user_event_emitter.hpp>
 #include <cmath>
-#include <music_track_nums.h>
-#include <user_events.h>
+#include <music_track_nums.hpp>
+#include <user_events.hpp>
 
 
 

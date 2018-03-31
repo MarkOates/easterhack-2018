@@ -5,7 +5,7 @@
 
 
 #include <allegro5/allegro_audio.h>
-#include <framework/bin.h>
+#include <framework/bin.hpp>
 
 
 

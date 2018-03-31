@@ -2,7 +2,7 @@
 
 
 
-#include <framework/motion.h>
+#include <framework/motion.hpp>
 
 #include <allegro5/allegro.h> // for al_get_time()
 

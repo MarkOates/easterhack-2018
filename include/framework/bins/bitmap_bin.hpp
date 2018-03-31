@@ -6,7 +6,7 @@
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
-#include <framework/bin.h>
+#include <framework/bin.hpp>
 
 
 

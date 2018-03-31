@@ -1,7 +1,7 @@
 
 
 
-#include <generators/kid_name_generator.h>
+#include <generators/kid_name_generator.hpp>
 
 #include <algorithm>
 

@@ -1,11 +1,11 @@
 
 
 
-#include <factories/dialogue_factory.h>
+#include <factories/dialogue_factory.hpp>
 
-#include <framework/framework.h>
-#include <models/item_dialogue.h>
-#include <item_type_nums.h>
+#include <framework/framework.hpp>
+#include <models/item_dialogue.hpp>
+#include <item_type_nums.hpp>
 
 
 

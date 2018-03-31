@@ -2,9 +2,9 @@
 
 
 
-#include <models/inventory.h>
-#include <models/naughty_list.h>
-#include <sprite_sheet.h>
+#include <models/inventory.hpp>
+#include <models/naughty_list.hpp>
+#include <sprite_sheet.hpp>
 
 
 

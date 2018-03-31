@@ -2,14 +2,14 @@
 
 
 
-#include <framework/model3d.h>
+#include <framework/model3d.hpp>
 
 #include <cstdio>
 #include <iostream>
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
-#include <framework/console_color.h>
-#include <framework/vec3d.h>
+#include <framework/console_color.hpp>
+#include <framework/vec3d.hpp>
 
 
 

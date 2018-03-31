@@ -2,10 +2,10 @@
 
 
 
-#include <framework/objects/sound_object.h>
+#include <framework/objects/sound_object.hpp>
 
-#include <framework/bins/sample_bin.h>
-#include <framework/render_sample.h>
+#include <framework/bins/sample_bin.hpp>
+#include <framework/render_sample.hpp>
 
 
 	

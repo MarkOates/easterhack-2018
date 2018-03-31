@@ -11,9 +11,9 @@
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_native_dialog.h>
-#include <framework/vec2d.h>
-#include <framework/vec3d.h>
-#include <framework/color.h>
+#include <framework/vec2d.hpp>
+#include <framework/vec3d.hpp>
+#include <framework/color.hpp>
 
 
 
@@ -268,7 +268,7 @@ void draw_dashed_line(float x, float y, float x2, float y2, ALLEGRO_COLOR &col, 
 void draw_unicode_char(ALLEGRO_FONT *font, ALLEGRO_COLOR color, int32_t icon, int flags, float x, float y);
 
 // Initializes an animation on an `ALLEGRO_COLOR` so that it will crossfade between two colors.
-#include <framework/motion.h>
+#include <framework/motion.hpp>
 void animate_color(Motion *motion, ALLEGRO_COLOR *dest_color, const ALLEGRO_COLOR start, const ALLEGRO_COLOR end, double start_time, double duration, interpolator::interpolator_func_t interpolator_func);
 
 // Captures a screenshot of the current display (e.g. the contents of the current program window) and writes the image to a file.

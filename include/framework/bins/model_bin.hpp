@@ -6,8 +6,8 @@
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
-#include <framework/bin.h>
-#include <framework/model3d.h>
+#include <framework/bin.hpp>
+#include <framework/model3d.hpp>
 
 
 

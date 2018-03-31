@@ -2,10 +2,10 @@
 
 
 
-#include <models/entities/entity_base.h>
+#include <models/entities/entity_base.hpp>
 
-#include <framework/shader.h>
-#include <sprite_sheet.h>
+#include <framework/shader.hpp>
+#include <sprite_sheet.hpp>
 
 
 

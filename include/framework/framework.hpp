@@ -9,14 +9,14 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_native_dialog.h>
-#include <framework/bins/bitmap_bin.h>
-#include <framework/bins/font_bin.h>
-#include <framework/bins/model_bin.h>
-#include <framework/bins/sample_bin.h>
-#include <framework/config.h>
-#include <framework/display.h>
-#include <framework/motion.h>
-#include <framework/screen.h>
+#include <framework/bins/bitmap_bin.hpp>
+#include <framework/bins/font_bin.hpp>
+#include <framework/bins/model_bin.hpp>
+#include <framework/bins/sample_bin.hpp>
+#include <framework/config.hpp>
+#include <framework/display.hpp>
+#include <framework/motion.hpp>
+#include <framework/screen.hpp>
 
 
 

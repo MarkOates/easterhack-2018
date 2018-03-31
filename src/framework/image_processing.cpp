@@ -2,13 +2,13 @@
 
 
 
-#include <framework/image_processing.h>
+#include <framework/image_processing.hpp>
 
 #include <math.h> // for sqrt
 #include <allegro5/allegro_primitives.h>
-#include <framework/color.h>
-#include <framework/path2d.h>
-#include <framework/useful.h> // for only ALLEGRO_FLAGS_EMPTY
+#include <framework/color.hpp>
+#include <framework/path2d.hpp>
+#include <framework/useful.hpp> // for only ALLEGRO_FLAGS_EMPTY
 
 
 

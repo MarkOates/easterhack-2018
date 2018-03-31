@@ -9,9 +9,9 @@
 #include <string>
 #include <vector>
 #include <allegro5/allegro.h>
-#include <framework/console_color.h>
-#include <framework/useful.h>
-#include <framework/useful_php.h>
+#include <framework/console_color.hpp>
+#include <framework/useful.hpp>
+#include <framework/useful_php.hpp>
 
 
 

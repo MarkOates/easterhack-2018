@@ -2,17 +2,17 @@
 
 
 
-#include <framework/framework.h>
+#include <framework/framework.hpp>
 
 #include <allegro5/allegro_acodec.h>
 #include <allegro5/allegro_ttf.h>
-#include <framework/bins/bitmap_bin.h>
-#include <framework/bins/font_bin.h>
-#include <framework/bins/model_bin.h>
-#include <framework/bins/sample_bin.h>
-#include <framework/motion.h>
-#include <framework/useful.h>
-#include <framework/version.h>
+#include <framework/bins/bitmap_bin.hpp>
+#include <framework/bins/font_bin.hpp>
+#include <framework/bins/model_bin.hpp>
+#include <framework/bins/sample_bin.hpp>
+#include <framework/motion.hpp>
+#include <framework/useful.hpp>
+#include <framework/version.hpp>
 
 
 

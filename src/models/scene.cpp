@@ -1,10 +1,10 @@
 
 
 
-#include <models/entities/entity_base.h>
-#include <helpers/scene_collection_helper.h>
-#include <helpers/scene_collision_helper.h>
-#include <models/scene.h>
+#include <models/entities/entity_base.hpp>
+#include <helpers/scene_collection_helper.hpp>
+#include <helpers/scene_collision_helper.hpp>
+#include <models/scene.hpp>
 #include <algorithm>
 
 

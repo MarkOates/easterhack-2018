@@ -1,7 +1,7 @@
 
 
 
-#include <models/inventory.h>
+#include <models/inventory.hpp>
 
 #include <sstream>
 

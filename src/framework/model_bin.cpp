@@ -2,7 +2,7 @@
 
 
 
-#include <framework/bins/model_bin.h>
+#include <framework/bins/model_bin.hpp>
 
 
 

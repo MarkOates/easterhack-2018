@@ -2,9 +2,9 @@
 
 
 
-#include <framework/appearance2d.h>
+#include <framework/appearance2d.hpp>
 
-#include <framework/useful.h> // for tostring()
+#include <framework/useful.hpp> // for tostring()
 
 
 

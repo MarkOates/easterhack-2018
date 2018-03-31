@@ -1,10 +1,10 @@
 
 
 
-#include <sprite_sheet.h>
+#include <sprite_sheet.hpp>
 
-#include <framework/framework.h>
-#include <framework/image_processing.h>
+#include <framework/framework.hpp>
+#include <framework/image_processing.hpp>
 
 
 

@@ -2,8 +2,8 @@
 
 
 
-#include <models/entities/entity_base.h>
-#include <sprite_sheet.h>
+#include <models/entities/entity_base.hpp>
+#include <sprite_sheet.hpp>
 
 
 

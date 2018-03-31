@@ -5,7 +5,7 @@
 #include <math.h>
 #include <string>
 
-#include <framework/interpolators.h>
+#include <framework/interpolators.hpp>
 
 
 

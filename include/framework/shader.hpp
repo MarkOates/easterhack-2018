@@ -5,7 +5,7 @@
 
 
 #include <allegro5/allegro.h>
-#include <framework/vec3d.h>
+#include <framework/vec3d.hpp>
 
 
 

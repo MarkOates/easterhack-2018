@@ -2,12 +2,12 @@
 
 
 
-#include <framework/path2d.h>
+#include <framework/path2d.hpp>
 
 #include <iostream>
 //#include <allegro_flare/text_object.h>
-#include <framework/useful.h>
-#include <framework/useful_php.h>
+#include <framework/useful.hpp>
+#include <framework/useful_php.hpp>
 
 
 

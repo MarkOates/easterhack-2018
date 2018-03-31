@@ -2,9 +2,9 @@
 
 
 
-#include <framework/display.h>
-#include <framework/motion.h>
-#include <models/entities/entity_base.h>
+#include <framework/display.hpp>
+#include <framework/motion.hpp>
+#include <models/entities/entity_base.hpp>
 
 
 

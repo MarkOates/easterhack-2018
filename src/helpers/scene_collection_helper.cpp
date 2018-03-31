@@ -1,7 +1,7 @@
 
 
 
-#include <helpers/scene_collection_helper.h>
+#include <helpers/scene_collection_helper.hpp>
 
 
 

@@ -5,7 +5,7 @@
 
 
 #include <allegro5/allegro.h>
-#include <framework/blender.h>
+#include <framework/blender.hpp>
 
 
 

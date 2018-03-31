@@ -2,7 +2,7 @@
 
 
 
-#include <framework/objects/sound_object.h>
+#include <framework/objects/sound_object.hpp>
 
 
 

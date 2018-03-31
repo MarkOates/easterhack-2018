@@ -2,10 +2,10 @@
 
 
 
-#include <framework/display.h>
+#include <framework/display.hpp>
 
-#include <framework/color.h>
-#include <framework/framework.h>
+#include <framework/color.hpp>
+#include <framework/framework.hpp>
 //#include <framework/allegro_flare.h>
 
 

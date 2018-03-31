@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 #include <allegro5/allegro.h>
-#include <framework/display.h>
+#include <framework/display.hpp>
 
 
 

@@ -1,7 +1,7 @@
 
 
 
-#include <framework/config.h>
+#include <framework/config.hpp>
 
 #include <iostream>
 

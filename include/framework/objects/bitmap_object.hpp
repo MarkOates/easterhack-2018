@@ -9,7 +9,7 @@
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
-#include <framework/object2d.h>
+#include <framework/object2d.hpp>
 
 
 

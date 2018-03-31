@@ -2,16 +2,16 @@
 
 
 
-#include <framework/screen.h>
+#include <framework/screen.hpp>
 
-#include <controllers/player_krampus_controller.h>
-#include <controllers/ai_kid_controller.h>
-#include <helpers/game_play_screen_state_helper.h>
-#include <models/camera.h>
-#include <models/hud.h>
-#include <models/inventory.h>
-#include <models/naughty_list.h>
-#include <models/scene.h>
+#include <controllers/player_krampus_controller.hpp>
+#include <controllers/ai_kid_controller.hpp>
+#include <helpers/game_play_screen_state_helper.hpp>
+#include <models/camera.hpp>
+#include <models/hud.hpp>
+#include <models/inventory.hpp>
+#include <models/naughty_list.hpp>
+#include <models/scene.hpp>
 
 
 

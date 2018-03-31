@@ -1,17 +1,17 @@
 
 
 
-#include <screens/game_play_screen.h>
+#include <screens/game_play_screen.hpp>
 
 //#include <framework/allegro_flare.h>
-#include <models/entities/door_entity.h>
-#include <emitters/user_event_emitter.h>
-#include <factories/entity_factory.h>
-#include <factories/scene_factory.h>
-#include <helpers/scene_collection_helper.h>
-#include <item_type_nums.h>
-#include <music_track_nums.h>
-#include <user_events.h>
+#include <models/entities/door_entity.hpp>
+#include <emitters/user_event_emitter.hpp>
+#include <factories/entity_factory.hpp>
+#include <factories/scene_factory.hpp>
+#include <helpers/scene_collection_helper.hpp>
+#include <item_type_nums.hpp>
+#include <music_track_nums.hpp>
+#include <user_events.hpp>
 
 
 

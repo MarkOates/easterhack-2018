@@ -2,7 +2,7 @@
 
 
 
-#include <framework/placement2d.h>
+#include <framework/placement2d.hpp>
 
 #include <sstream>
 #include <allegro5/allegro_color.h>

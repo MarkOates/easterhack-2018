@@ -2,7 +2,7 @@
 
 
 
-#include <framework/vec2d.h>
+#include <framework/vec2d.hpp>
 
 #include <cmath>
 #include <sstream>

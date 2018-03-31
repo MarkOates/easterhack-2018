@@ -1,12 +1,12 @@
 
 
 
-#include <models/hud.h>
+#include <models/hud.hpp>
 
-#include <framework/framework.h>
-#include <framework/image_processing.h>
-#include <framework/objects/text_object.h>
-#include <item_type_nums.h>
+#include <framework/framework.hpp>
+#include <framework/image_processing.hpp>
+#include <framework/objects/text_object.hpp>
+#include <item_type_nums.hpp>
 #include <sstream>
 
 

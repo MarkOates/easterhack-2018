@@ -6,8 +6,8 @@
 
 #include <string>
 #include <allegro5/allegro.h>
-#include <framework/vec2b.h>
-#include <framework/vec2d.h>
+#include <framework/vec2b.hpp>
+#include <framework/vec2d.hpp>
 
 
 

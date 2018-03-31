@@ -1,15 +1,15 @@
 
 
 
-#include <helpers/game_play_screen_state_helper.h>
+#include <helpers/game_play_screen_state_helper.hpp>
 
-#include <emitters/user_event_emitter.h>
-#include <factories/dialogue_factory.h>
-#include <helpers/scene_collection_helper.h>
-#include <screens/game_play_screen.h>
-#include <item_type_nums.h>
-#include <music_track_nums.h>
-#include <user_events.h>
+#include <emitters/user_event_emitter.hpp>
+#include <factories/dialogue_factory.hpp>
+#include <helpers/scene_collection_helper.hpp>
+#include <screens/game_play_screen.hpp>
+#include <item_type_nums.hpp>
+#include <music_track_nums.hpp>
+#include <user_events.hpp>
 
 
 

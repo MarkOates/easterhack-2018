@@ -2,8 +2,8 @@
 
 
 
-#include <sprite_sheet.h>
-#include <models/item_dialogue.h>
+#include <sprite_sheet.hpp>
+#include <models/item_dialogue.hpp>
 
 
 

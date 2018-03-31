@@ -2,7 +2,7 @@
 
 
 
-#include <framework/bins/bitmap_bin.h>
+#include <framework/bins/bitmap_bin.hpp>
 
 
 

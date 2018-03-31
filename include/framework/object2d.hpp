@@ -6,9 +6,9 @@
 
 #include <iostream>
 #include <string>
-#include <framework/appearance2d.h>
-#include <framework/placement2d.h>
-#include <framework/useful.h>
+#include <framework/appearance2d.hpp>
+#include <framework/placement2d.hpp>
+#include <framework/useful.hpp>
 
 
 

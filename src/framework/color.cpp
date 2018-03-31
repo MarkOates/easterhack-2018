@@ -2,7 +2,7 @@
 
 
 
-#include <framework/color.h>
+#include <framework/color.hpp>
 
 #include <algorithm>
 #include <cmath>

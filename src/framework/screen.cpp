@@ -2,14 +2,14 @@
 
 
 
-#include <framework/screen.h>
+#include <framework/screen.hpp>
 
 #include <iostream>
 #include <allegro5/allegro_color.h>
-#include <framework/framework.h> // just for af::drawing_profiler_graph
-#include <framework/console_color.h>
-#include <framework/display.h>
-#include <framework/profile_timer.h>
+#include <framework/framework.hpp> // just for af::drawing_profiler_graph
+#include <framework/console_color.hpp>
+#include <framework/display.hpp>
+#include <framework/profile_timer.hpp>
 
 
 

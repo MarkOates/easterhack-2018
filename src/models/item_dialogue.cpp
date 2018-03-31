@@ -1,11 +1,11 @@
 
 
 
-#include <models/item_dialogue.h>
+#include <models/item_dialogue.hpp>
 
-#include <framework/objects/text_object.h>
-#include <framework/color.h>
-#include <framework/framework.h>
+#include <framework/objects/text_object.hpp>
+#include <framework/color.hpp>
+#include <framework/framework.hpp>
 #include <cmath>
 
 

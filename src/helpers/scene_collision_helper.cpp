@@ -1,15 +1,15 @@
 
 
 
-#include <helpers/scene_collision_helper.h>
+#include <helpers/scene_collision_helper.hpp>
 
-#include <emitters/user_event_emitter.h>
-#include <models/entities/damage_zone_entity.h>
-#include <models/entities/entity_base.h>
-#include <models/entities/kid_entity.h>
-#include <models/entities/krampus_entity.h>
-#include <helpers/scene_collection_helper.h>
-#include <user_events.h>
+#include <emitters/user_event_emitter.hpp>
+#include <models/entities/damage_zone_entity.hpp>
+#include <models/entities/entity_base.hpp>
+#include <models/entities/kid_entity.hpp>
+#include <models/entities/krampus_entity.hpp>
+#include <helpers/scene_collection_helper.hpp>
+#include <user_events.hpp>
 
 
 

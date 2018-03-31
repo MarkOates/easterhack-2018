@@ -2,9 +2,9 @@
 
 
 
-#include <framework/objects/bitmap_object.h>
-#include <framework/placement2d.h>
-#include <framework/element_id.h>
+#include <framework/objects/bitmap_object.hpp>
+#include <framework/placement2d.hpp>
+#include <framework/element_id.hpp>
 
 
 

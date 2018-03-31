@@ -1,12 +1,12 @@
 
 
 
-#include <models/entities/krampus_entity.h>
+#include <models/entities/krampus_entity.hpp>
 
-#include <emitters/user_event_emitter.h>
-#include <factories/entity_factory.h>
-#include <music_track_nums.h>
-#include <user_events.h>
+#include <emitters/user_event_emitter.hpp>
+#include <factories/entity_factory.hpp>
+#include <music_track_nums.hpp>
+#include <user_events.hpp>
 #include <cmath>
 
 

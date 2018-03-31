@@ -3,7 +3,7 @@
 
 
 #include <allegro5/allegro_font.h>
-#include <framework/screen.h>
+#include <framework/screen.hpp>
 
 
 

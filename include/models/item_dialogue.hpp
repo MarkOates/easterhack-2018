@@ -2,7 +2,7 @@
 
 
 
-#include <framework/objects/bitmap_object.h>
+#include <framework/objects/bitmap_object.hpp>
 #include <vector>
 #include <string>
 

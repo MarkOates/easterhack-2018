@@ -2,7 +2,7 @@
 
 
 
-#include <framework/profile_timer.h>
+#include <framework/profile_timer.hpp>
 
 #include <algorithm>
 #include <sstream>

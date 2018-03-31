@@ -6,7 +6,7 @@
 
 #include <vector>
 #include <allegro5/allegro_primitives.h>
-#include <framework/vec2d.h>
+#include <framework/vec2d.hpp>
 
 
 

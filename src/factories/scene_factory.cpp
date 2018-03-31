@@ -1,10 +1,10 @@
 
 
 
-#include <factories/scene_factory.h>
+#include <factories/scene_factory.hpp>
 
-#include <models/entities/entity_base.h>
-#include <factories/entity_factory.h>
+#include <models/entities/entity_base.hpp>
+#include <factories/entity_factory.hpp>
 
 
 

@@ -2,10 +2,10 @@
 
 
 
-#include <framework/shader.h>
+#include <framework/shader.hpp>
 
 #include <iostream>
-#include <framework/cubemap.h>
+#include <framework/cubemap.hpp>
 
 
 

@@ -2,7 +2,7 @@
 
 
 
-#include <framework/useful.h>
+#include <framework/useful.hpp>
 
 #include <algorithm>
 #include <cmath>

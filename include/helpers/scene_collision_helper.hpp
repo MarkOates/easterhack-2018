@@ -2,8 +2,8 @@
 
 
 
-#include <models/scene.h>
-#include <helpers/scene_collection_helper.h>
+#include <models/scene.hpp>
+#include <helpers/scene_collection_helper.hpp>
 
 
 

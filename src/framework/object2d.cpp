@@ -2,11 +2,11 @@
 
 
 
-#include <framework/object2d.h>
+#include <framework/object2d.hpp>
 
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
-#include <framework/useful_php.h>
+#include <framework/useful_php.hpp>
 
 
 

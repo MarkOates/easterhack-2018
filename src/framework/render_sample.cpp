@@ -2,7 +2,7 @@
 
 
 
-#include <framework/render_sample.h>
+#include <framework/render_sample.hpp>
 
 #include <iostream>
 #include <allegro5/allegro_acodec.h>

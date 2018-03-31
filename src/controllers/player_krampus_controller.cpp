@@ -1,9 +1,9 @@
 
 
 
-#include <controllers/player_krampus_controller.h>
+#include <controllers/player_krampus_controller.hpp>
 
-#include <framework/useful.h> // for key_pressed()
+#include <framework/useful.hpp> // for key_pressed()
 
 
 
