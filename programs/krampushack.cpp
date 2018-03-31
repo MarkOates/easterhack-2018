@@ -1,8 +1,8 @@
 
 
 
+#include <framework/screens/gamer_input_screen.hpp>
 #include <framework/screen.hpp>
-
 #include <controllers/audio_controller.hpp>
 #include <emitters/user_event_emitter.hpp>
 #include <factories/storyboard_factory.hpp>
@@ -16,11 +16,14 @@ class KrampusHackProject : public Screen
 {
 public:
    Screen *current_screen;
+   GamerInputScreen gamer_input_screen;
    AudioController audio_controller;
+
 	KrampusHackProject(Display *display)
       : Screen(display)
       , current_screen(nullptr)
       , audio_controller()
+      , gamer_input_screen(display)
    {
       UserEventEmitter::emit_event(START_TITLE_SCREEN);
    }
