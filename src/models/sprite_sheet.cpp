@@ -1,7 +1,7 @@
 
 
 
-#include <sprite_sheet.hpp>
+#include <models/sprite_sheet.hpp>
 
 #include <framework/framework.hpp>
 #include <framework/image_processing.hpp>

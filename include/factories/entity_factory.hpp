@@ -2,11 +2,10 @@
 
 
 
-#include <sprite_sheet.hpp>
-
 #include <framework/shader.hpp>
 #include <models/entities/entity_base.hpp>
 #include <models/entities/kid_entity.hpp>
+#include <models/sprite_sheet.hpp>
 
 
 

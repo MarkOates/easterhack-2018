@@ -4,7 +4,7 @@
 
 #include <models/inventory.hpp>
 #include <models/naughty_list.hpp>
-#include <sprite_sheet.hpp>
+#include <models/sprite_sheet.hpp>
 
 
 

@@ -5,7 +5,7 @@
 #include <models/entities/entity_base.hpp>
 
 #include <framework/shader.hpp>
-#include <sprite_sheet.hpp>
+#include <models/sprite_sheet.hpp>
 
 
 
