@@ -21,7 +21,7 @@ public:
    int menu_cursor_pos;
    TextObject title;
    TextObject title2;
-   std::vector<TextObject> menu_items;
+   std::vector<std::pair<TextObject, int32_t>> menu_items;
    int state;
 
    TitleScreen(Display *display);

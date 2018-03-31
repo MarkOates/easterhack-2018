@@ -20,7 +20,11 @@ TitleScreen::TitleScreen(Display *display)
    , menu_cursor_pos(0)
    , title(TextObject("The Krampus"))
    , title2(TextObject("Christmas Calamity"))
-   , menu_items({TextObject(MENU_OPTION_QUICK_START), TextObject(MENU_OPTION_START), TextObject(MENU_OPTION_EXIT)})
+   , menu_items({
+         { TextObject(MENU_OPTION_QUICK_START), START_GAME_EVENT },
+         { TextObject(MENU_OPTION_START), START_INTRO_STORYBOARD_SCREEN },
+         { TextObject(MENU_OPTION_EXIT), QUIT_GAME_EVENT }
+      })
    , state(SHOWING_TITLE)
 {
    ALLEGRO_FONT *font = fonts["ChronoTrigger.ttf 60"];
@@ -38,7 +42,7 @@ TitleScreen::TitleScreen(Display *display)
    int count = 0;
    for (auto &menu_item : menu_items)
    {
-      menu_item.font(font)
+      menu_item.first.font(font)
          .align(0.5, 0.5)
          .scale(1.0, 1.0)
          .position(display->center(), display->middle()+count*50 + 100);
@@ -60,7 +64,7 @@ void TitleScreen::primary_timer_func()
    title2.draw();
 
    // draw the menu options
-   for (auto &menu_item : menu_items) menu_item.draw();
+   for (auto &menu_item : menu_items) menu_item.first.draw();
 }
 
 
@@ -106,8 +110,8 @@ void TitleScreen::refresh_focused_menu_item()
 {
    for (unsigned i=0; i<menu_items.size(); i++)
    {
-      if (i == menu_cursor_pos) menu_items[i].scale(1.5, 1.5).color(color::yellow);
-      else menu_items[i].scale(1.0, 1.0).color(color::gray);
+      if (i == menu_cursor_pos) menu_items[i].first.scale(1.5, 1.5).color(color::yellow);
+      else menu_items[i].first.scale(1.0, 1.0).color(color::gray);
    }
 }
 
@@ -117,16 +121,10 @@ void TitleScreen::select_option_action()
 {
    state = ITEM_SELECTED;
 
-   std::string selected_menu_str = menu_items[menu_cursor_pos].str;
+   std::pair<TextObject, int32_t> &menu_item = menu_items[menu_cursor_pos];
+   std::cout << "TitleScreen: emitting event \"" << menu_item.first.str << "\"\n";
 
-   if (selected_menu_str == MENU_OPTION_START)
-      UserEventEmitter::emit_event(START_INTRO_STORYBOARD_SCREEN);
-   if (selected_menu_str == MENU_OPTION_QUICK_START)
-      UserEventEmitter::emit_event(START_GAME_EVENT);
-   else if (selected_menu_str == MENU_OPTION_EXIT)
-      UserEventEmitter::emit_event(QUIT_GAME_EVENT);
-   else
-      throw std::runtime_error("TitleScreen::select_option_action(), menu option not found");
+   UserEventEmitter::emit_event(menu_item.second);
 }
 
 
