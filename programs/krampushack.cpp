@@ -59,7 +59,14 @@ public:
       case PLAY_SOUND_EFFECT:
          {
             int sound_effect_id = event->user.data1;
-            audio_controller.play_sound_effect_by_id(sound_effect_id);
+            std::string *track_id_str_ptr = (std::string *)event->user.data2;
+
+            if (sound_effect_id != 0) audio_controller.play_sound_effect_by_id(sound_effect_id);
+            if (track_id_str_ptr)
+            {
+               audio_controller.play_sound_effect_by_name(*track_id_str_ptr);
+               delete track_id_str_ptr;
+            }
          }
          break;
       case QUIT_GAME_EVENT:

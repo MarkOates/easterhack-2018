@@ -4,6 +4,8 @@
 
 #include <framework/objects/sound_object.hpp>
 
+#include <map>
+
 
 
 class AudioController
@@ -18,6 +20,8 @@ private:
    Sound fail_moan_sound_effect;
    Sound strong_punch_sound_effect;
    int current_music_track_num;
+
+   std::map<std::string, Sound*> sound_effects;
 
 public:
    AudioController();
@@ -34,6 +38,7 @@ public:
 
    void play_audio_track_by_id(int id);
    void play_sound_effect_by_id(int id);
+   void play_sound_effect_by_name(std::string id_str);
 };
 
 

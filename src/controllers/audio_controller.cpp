@@ -18,6 +18,7 @@ AudioController::AudioController()
    , fail_moan_sound_effect(Framework::sample("fail_moan.ogg"))
    , strong_punch_sound_effect(Framework::sample("strong_punch.ogg"))
    , current_music_track_num(-1)
+   , sound_effects()
 {
    game_show_music.loop(true);
    storyboard_music.loop(true);
@@ -29,6 +30,7 @@ AudioController::AudioController()
 AudioController::~AudioController()
 {
    stop_all();
+   for (auto &sound_effect : sound_effects) delete sound_effect.second;
 }
 
 
@@ -136,6 +138,18 @@ void AudioController::play_sound_effect_by_id(int track_id)
    default:
       break;
    }
+}
+
+
+
+void AudioController::play_sound_effect_by_name(std::string id_str)
+{
+   std::map<std::string, Sound*>::iterator it = sound_effects.find(id_str);
+   if (it == sound_effects.end()) sound_effects[id_str] = new Sound(Framework::sample(id_str));
+
+   Sound *sound = sound_effects[id_str];
+   if (sound) sound->play();
+   else std::cout << "AudioController::play_sound_effect_by_id(std::string id_str) could not play \"" << id_str << "\"" << std::endl;
 }
 
 
