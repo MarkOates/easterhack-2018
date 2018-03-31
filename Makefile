@@ -5,7 +5,6 @@
 # LIBS_ROOT=E:
 LIBS_ROOT=/Users/markoates/Repos
 ALLEGRO_DIR=$(LIBS_ROOT)/allegro5/build
-KRAMPUSHACK_DIR=$(LIBS_ROOT)/krampushack
 
 
 
