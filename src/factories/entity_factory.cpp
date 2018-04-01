@@ -100,6 +100,13 @@ EntityBase *EntityFactory::create_krampus_attack_damage_zone_with_club(ElementID
 
 
 
+EntityBase *EntityFactory::create_enemy_attack_damage_zone(ElementID *parent, float x, float y, float w, float h)
+{
+   return new DamageZoneEntity(parent, "enemy_attack_damage_zone", x, y, w, h);
+}
+
+
+
 EntityBase *EntityFactory::create_background1(ElementID *parent, float x, float y)
 {
    return new BackgroundEntity(parent, get_instance()->background1, x, y);

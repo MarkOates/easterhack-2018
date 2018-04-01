@@ -21,6 +21,7 @@ class KnightEntity : public EnemyBase
 private:
    enum state_t
    {
+      STATE_ATTACKING,
       STATE_STANDING_STILL,
       STATE_TAKING_HIT,
       STATE_WALKING_UP,
@@ -29,8 +30,10 @@ private:
       STATE_WALKING_RIGHT
    };
 
+   SpriteSheet *sprite_sheet;
    knight_behavior_t behavior;
    std::string name;
+   float state_counter;
    float walk_speed;
    state_t state;
    Shader *flat_color_shader;
@@ -50,12 +53,15 @@ public:
    void update() override;
    void draw() override;
 
+   void attack();
    void stand_still();
    void walk_up();
    void walk_down();
    void walk_left();
    void walk_right();
    void take_hit() override;
+
+   bool is_busy();
 
    void reveal_behavior();
    std::string get_name();

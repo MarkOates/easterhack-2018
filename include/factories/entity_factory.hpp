@@ -44,6 +44,7 @@ public:
    static EntityBase *create_krampus(ElementID *parent, float x, float y);
    static EntityBase *create_krampus_attack_damage_zone(ElementID *parent, float x, float y, float w, float h);
    static EntityBase *create_krampus_attack_damage_zone_with_club(ElementID *parent, float x, float y, float w, float h);
+   static EntityBase *create_enemy_attack_damage_zone(ElementID *parent, float x, float y, float w, float h);
    static EntityBase *create_door1(ElementID *parent, float x, float y, std::string name, int destination_scene, std::string destination_door_name);
    static EntityBase *create_door2(ElementID *parent, float x, float y, std::string name, int destination_scene, std::string destination_door_name);
    static EntityBase *create_door3(ElementID *parent, float x, float y, std::string name, int destination_scene, std::string destination_door_name);

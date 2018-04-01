@@ -4,6 +4,7 @@
 #include <models/entities/enemies/knight_entity.hpp>
 
 #include <emitters/user_event_emitter.hpp>
+#include <factories/entity_factory.hpp>
 #include <cmath>
 #include <music_track_nums.hpp>
 #include <user_events.hpp>
@@ -16,21 +17,22 @@
 
 KnightEntity::KnightEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, knight_behavior_t behavior, int sprite_index, int identity_sprite_index)
    : EnemyBase(parent, "knight", x, y)
+   , sprite_sheet(sprite_sheet)
    , name(name)
    , walk_speed(1.5)
    , state(STATE_STANDING_STILL)
    , flat_color_shader(flat_color_shader)
    , behavior(behavior)
    , identity_reveal_counter(IDENTITY_REVEAL_MAX)
-   , knight_bitmap(sprite_sheet->get_sprite(32))
    , identity_bitmap(sprite_sheet->get_sprite(identity_sprite_index))
 {
    place.size = vec2d(60, 30);
 
    if (sprite_index < 0) sprite_index = random_int(0, 16);
-   bitmap.bitmap(knight_bitmap);
+   bitmap.bitmap(sprite_sheet->get_sprite(34));
    bitmap.align(0.5, 1.0);
    bitmap.scale(2.0, 2.0);
+   bitmap.position(place.size.x/2, place.size.y/2);
 
    set("bound_in_world");
 }
@@ -52,6 +54,8 @@ void KnightEntity::reveal_behavior()
 
 void KnightEntity::update()
 {
+   state_counter -= 1.0 / 60.0;
+
    if (identity_reveal_counter < IDENTITY_REVEAL_MAX)
       identity_reveal_counter += 1.0 / 60.0;
 
@@ -59,6 +63,12 @@ void KnightEntity::update()
 
    switch(state)
    {
+   case STATE_ATTACKING:
+      if (state_counter <= 0)
+      {
+         bitmap.bitmap(sprite_sheet->get_sprite(34));
+         set_state(STATE_STANDING_STILL);
+      }
    case STATE_TAKING_HIT:
       break;
    default:
@@ -79,19 +89,23 @@ void KnightEntity::draw()
    flat_color_shader->set_float("tint_intensity", tint_intensity);
 
    place.start_transform();
-   bitmap.position(place.size.x/2, place.size.y/2);
-      bitmap.opacity(1.0);
-      bitmap.bitmap(knight_bitmap);
-      bitmap.draw();
+   bitmap.draw();
 
    flat_color_shader->stop();
 
-   bitmap.bitmap(identity_bitmap);
-      bitmap.opacity(tint_intensity);
-      bitmap.draw();
+   //bitmap.bitmap(identity_bitmap);
+      //bitmap.opacity(tint_intensity);
+      //bitmap.draw();
 
    place.restore_transform();
 
+}
+
+
+
+void KnightEntity::attack()
+{
+   set_state(STATE_ATTACKING);
 }
 
 
@@ -138,12 +152,25 @@ void KnightEntity::take_hit()
 
 
 
+bool KnightEntity::is_busy()
+
+{
+   return state_counter > 0.0;
+}
+
+
+
 void KnightEntity::set_state(state_t new_state)
 {
    state = new_state;
 
    switch (state)
    {
+   case STATE_ATTACKING:
+      EntityFactory::create_enemy_attack_damage_zone(get_parent(), place.position.x-150, place.position.y, 150, 50);
+      bitmap.bitmap(sprite_sheet->get_sprite(35));
+      state_counter = 0.3;
+      break;
    case STATE_STANDING_STILL:
       velocity.position = vec2d(0.0, 0.0);
       break;
