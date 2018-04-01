@@ -27,6 +27,7 @@ void SceneCollisionHelper::resolve_collisions()
    update_entities();
    limit_sprites_to_world_bounds();
    check_damage_zones_on_enemies();
+   check_damage_zones_on_krampus();
    check_krampus_on_door();
    check_krampus_on_items();
 };
@@ -61,7 +62,7 @@ void SceneCollisionHelper::limit_sprites_to_world_bounds()
 void SceneCollisionHelper::check_damage_zones_on_enemies()
 {
    // damage zone <-> enemy collisions
-   for (auto &damage_zone : collections.get_all_damage_zones())
+   for (auto &damage_zone : collections.get_all_damage_zones_that_damage_enemies())
    {
       for (auto &enemy : collections.get_enemies())
       {
@@ -70,6 +71,22 @@ void SceneCollisionHelper::check_damage_zones_on_enemies()
             if (damage_zone->is_krampus_damage_zone()) enemy->take_hit();
             else if (damage_zone->is_krampus_damage_zone_with_club()) enemy->flag_for_deletion();
          }
+      }
+   }
+}
+
+
+
+void SceneCollisionHelper::check_damage_zones_on_krampus()
+{
+   KrampusEntity *krampus = collections.get_krampus();
+
+   // damage zone <-> krampus collisions
+   for (auto &damage_zone : collections.get_all_damage_zones_that_damage_krampus())
+   {
+      if (damage_zone->collides(*krampus))
+      {
+         krampus->take_hit();
       }
    }
 }

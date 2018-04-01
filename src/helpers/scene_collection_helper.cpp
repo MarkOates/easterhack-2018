@@ -5,6 +5,7 @@
 
 #include <models/entities/enemies/enemy_base.hpp>
 #include <models/entities/enemies/knight_entity.hpp>
+#include <entity_attribute_names.hpp>
 
 
 
@@ -58,6 +59,20 @@ std::vector<EnemyBase *> SceneCollectionHelper::get_enemies()
 std::vector<DamageZoneEntity *> SceneCollectionHelper::get_all_damage_zones()
 {
    return ElementID::recast_collection<DamageZoneEntity>(scene->find_all_descendants("type", "damage_zone"));
+}
+
+
+
+std::vector<DamageZoneEntity *> SceneCollectionHelper::get_all_damage_zones_that_damage_krampus()
+{
+   return ElementID::recast_collection<DamageZoneEntity>(scene->find_all_descendants(DAMAGES_KRAMPUS));
+}
+
+
+
+std::vector<DamageZoneEntity *> SceneCollectionHelper::get_all_damage_zones_that_damage_enemies()
+{
+   return ElementID::recast_collection<DamageZoneEntity>(scene->find_all_descendants(DAMAGES_ENEMIES));
 }
 
 
