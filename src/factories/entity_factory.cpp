@@ -4,12 +4,12 @@
 #include <framework/framework.hpp>
 #include <framework/image_processing.hpp>
 #include <factories/entity_factory.hpp>
+#include <models/entities/enemies/knight_entity.hpp>
 #include <models/entities/background_entity.hpp>
 #include <models/entities/door_entity.hpp>
 #include <models/entities/damage_zone_entity.hpp>
 #include <models/entities/item_entity.hpp>
 #include <models/entities/krampus_entity.hpp>
-#include <models/entities/knight_entity.hpp>
 #include <item_type_nums.hpp>
 
 

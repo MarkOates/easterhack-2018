@@ -4,7 +4,7 @@
 #include <helpers/scene_collection_helper.hpp>
 
 #include <models/entities/enemies/enemy_base.hpp>
-#include <models/entities/knight_entity.hpp>
+#include <models/entities/enemies/knight_entity.hpp>
 
 
 

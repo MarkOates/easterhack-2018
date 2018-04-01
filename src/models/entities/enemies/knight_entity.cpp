@@ -1,7 +1,7 @@
 
 
 
-#include <models/entities/knight_entity.hpp>
+#include <models/entities/enemies/knight_entity.hpp>
 
 #include <emitters/user_event_emitter.hpp>
 #include <cmath>

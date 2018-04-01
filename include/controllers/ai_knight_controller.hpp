@@ -2,7 +2,7 @@
 
 
 
-#include <models/entities/knight_entity.hpp>
+#include <models/entities/enemies/knight_entity.hpp>
 #include <controllers/ai_controller_base.hpp>
 
 
