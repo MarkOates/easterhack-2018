@@ -15,7 +15,7 @@
 
 
 KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior, int sprite_index, int identity_sprite_index)
-   : EntityBase(parent, "kid", x, y)
+   : EnemyBase(parent, "kid", x, y)
    , name(name)
    , walk_speed(1.5)
    , state(STATE_STANDING_STILL)

@@ -16,7 +16,7 @@ EnemyBase::~EnemyBase()
 }
 
 
-void EnemyBase::take_hit(int damage)
+void EnemyBase::take_hit()
 {
 }
 

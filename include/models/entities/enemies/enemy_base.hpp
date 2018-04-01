@@ -13,7 +13,7 @@ public:
    EnemyBase(ElementID *parent, std::string enemy_type, float x, float y, int health=1);
    virtual ~EnemyBase();
 
-   virtual void take_hit(int damage=1);
+   virtual void take_hit();
    int get_health();
 };
 

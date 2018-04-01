@@ -33,7 +33,7 @@ std::vector<EntityBase *> SceneCollectionHelper::get_all_entities_y_sorted()
 
 std::vector<KidEntity *> SceneCollectionHelper::get_kids()
 {
-   return ElementID::recast_collection<KidEntity>(scene->find_all_descendants("type", "kid"));
+   return ElementID::recast_collection<KidEntity>(scene->find_all_descendants("enemy_type", "kid"));
 }
 
 

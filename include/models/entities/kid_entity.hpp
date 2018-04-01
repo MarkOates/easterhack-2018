@@ -2,7 +2,7 @@
 
 
 
-#include <models/entities/entity_base.hpp>
+#include <models/entities/enemies/enemy_base.hpp>
 
 #include <framework/shader.hpp>
 #include <models/sprite_sheet.hpp>
@@ -18,7 +18,7 @@ enum behavior_t
 
 
 
-class KidEntity : public EntityBase
+class KidEntity : public EnemyBase
 {
 private:
    enum state_t
@@ -57,7 +57,7 @@ public:
    void walk_down();
    void walk_left();
    void walk_right();
-   void take_hit();
+   void take_hit() override;
 
    void reveal_behavior();
    std::string get_name();
