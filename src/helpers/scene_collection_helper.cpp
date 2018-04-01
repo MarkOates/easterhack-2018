@@ -4,6 +4,7 @@
 #include <helpers/scene_collection_helper.hpp>
 
 #include <models/entities/enemies/enemy_base.hpp>
+#include <models/entities/knight_entity.hpp>
 
 
 
@@ -36,6 +37,13 @@ std::vector<EntityBase *> SceneCollectionHelper::get_all_entities_y_sorted()
 std::vector<KidEntity *> SceneCollectionHelper::get_kids()
 {
    return ElementID::recast_collection<KidEntity>(scene->find_all_descendants("enemy_type", "kid"));
+}
+
+
+
+std::vector<KnightEntity *> SceneCollectionHelper::get_knights()
+{
+   return ElementID::recast_collection<KnightEntity>(scene->find_all_descendants("enemy_type", "knight"));
 }
 
 

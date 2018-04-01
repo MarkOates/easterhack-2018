@@ -13,6 +13,7 @@
 
 
 class EnemyBase;
+class KnightEntity;
 
 
 
@@ -27,6 +28,7 @@ public:
    std::vector<EntityBase *> get_all_entities();
    std::vector<EntityBase *> get_all_entities_y_sorted();
    std::vector<KidEntity *> get_kids();
+   std::vector<KnightEntity *> get_knights();
    std::vector<EnemyBase *> get_enemies();
    std::vector<DamageZoneEntity *> get_damage_zones();
    std::vector<EntityBase *> get_entities_bound_in_world();
