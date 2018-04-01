@@ -26,7 +26,7 @@ void SceneCollisionHelper::resolve_collisions()
 
    update_entities();
    limit_sprites_to_world_bounds();
-   check_damage_zones_on_children();
+   check_damage_zones_on_enemies();
    check_krampus_on_door();
    check_krampus_on_items();
 };
@@ -58,19 +58,17 @@ void SceneCollisionHelper::limit_sprites_to_world_bounds()
 
 
 
-void SceneCollisionHelper::check_damage_zones_on_children()
+void SceneCollisionHelper::check_damage_zones_on_enemies()
 {
-   std::vector<KidEntity *> kids = collections.get_kids();
-
-   // damage zone <-> kid collisions
+   // damage zone <-> enemy collisions
    for (auto &damage_zone : collections.get_damage_zones())
    {
-      for (auto &kid : kids)
+      for (auto &enemy : collections.get_enemies())
       {
-         if (damage_zone->is_dealing_damage() && damage_zone->collides(*kid))
+         if (damage_zone->is_dealing_damage() && damage_zone->collides(*enemy))
          {
-            if (damage_zone->is_krampus_damage_zone()) kid->take_hit();
-            else if (damage_zone->is_krampus_damage_zone_with_club()) kid->flag_for_deletion();
+            if (damage_zone->is_krampus_damage_zone()) enemy->take_hit();
+            else if (damage_zone->is_krampus_damage_zone_with_club()) enemy->flag_for_deletion();
          }
       }
    }
