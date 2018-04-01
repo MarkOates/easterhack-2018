@@ -3,14 +3,18 @@
 
 #include <models/entities/damage_zone_entity.hpp>
 
+#include <entity_attribute_names.hpp>
 
 
-DamageZoneEntity::DamageZoneEntity(ElementID *parent, std::string damage_zone_type, float x, float y, float w, float h)
+
+DamageZoneEntity::DamageZoneEntity(ElementID *parent, std::string damage_zone_type, bool damages_krampus, bool damages_enemies, float x, float y, float w, float h)
    : EntityBase(parent, "damage_zone", x, y)
    , dealing_damage(true)
 {
    place.size = vec2d(w, h);
    set("damage_zone_type", damage_zone_type);
+   if (damages_krampus) set(DAMAGES_KRAMPUS);
+   if (damages_enemies) set(DAMAGES_ENEMIES);
 }
 
 

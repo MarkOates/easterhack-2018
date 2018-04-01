@@ -12,7 +12,7 @@ private:
    bool dealing_damage;
 
 public:
-   DamageZoneEntity(ElementID *parent, std::string damage_zone_type, float x, float y, float w, float h);
+   DamageZoneEntity(ElementID *parent, std::string damage_zone_type, bool damages_krampus, bool damages_enemies, float x, float y, float w, float h);
    ~DamageZoneEntity();
 
    void draw() override;

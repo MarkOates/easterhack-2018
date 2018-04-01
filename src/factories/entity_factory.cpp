@@ -88,21 +88,21 @@ EntityBase *EntityFactory::create_krampus(ElementID *parent, float x, float y)
 
 EntityBase *EntityFactory::create_krampus_attack_damage_zone(ElementID *parent, float x, float y, float w, float h)
 {
-   return new DamageZoneEntity(parent, "krampus_damage_zone", x, y, w, h);
+   return new DamageZoneEntity(parent, "krampus_damage_zone", false, true, x, y, w, h);
 }
 
 
 
 EntityBase *EntityFactory::create_krampus_attack_damage_zone_with_club(ElementID *parent, float x, float y, float w, float h)
 {
-   return new DamageZoneEntity(parent, "krampus_damage_zone_club", x, y, w, h);
+   return new DamageZoneEntity(parent, "krampus_damage_zone_club", false, true, x, y, w, h);
 }
 
 
 
 EntityBase *EntityFactory::create_enemy_attack_damage_zone(ElementID *parent, float x, float y, float w, float h)
 {
-   return new DamageZoneEntity(parent, "enemy_attack_damage_zone", x, y, w, h);
+   return new DamageZoneEntity(parent, "enemy_attack_damage_zone", true, false, x, y, w, h);
 }
 
 
