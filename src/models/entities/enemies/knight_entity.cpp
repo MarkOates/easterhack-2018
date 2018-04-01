@@ -25,6 +25,7 @@ KnightEntity::KnightEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader 
    , behavior(behavior)
    , identity_reveal_counter(IDENTITY_REVEAL_MAX)
    , identity_bitmap(sprite_sheet->get_sprite(identity_sprite_index))
+   , health(5)
 {
    place.size = vec2d(60, 30);
 
@@ -153,7 +154,6 @@ void KnightEntity::take_hit()
 
 
 bool KnightEntity::is_busy()
-
 {
    return state_counter > 0.0;
 }
@@ -166,6 +166,23 @@ void KnightEntity::set_state(state_t new_state)
 
    switch (state)
    {
+   case STATE_DYING:
+      UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, 0, (intptr_t)(new std::string(DYING_ENEMY_SOUND_EFFECT)));
+      flag_for_deletion();
+      break;
+   case STATE_TAKING_HIT:
+      health -= 1;
+      if (health <= 0)
+      {
+         set_state(STATE_DYING);
+      }
+      else
+      {
+         velocity.position = vec2d(0.0, 0.0);
+         UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, 0, (intptr_t)(new std::string(METAL_KLANK_SOUND_EFFECT)));
+         reveal_behavior();
+      }
+      break;
    case STATE_ATTACKING:
       EntityFactory::create_enemy_attack_damage_zone(get_parent(), place.position.x-150, place.position.y, 150, 50);
       bitmap.bitmap(sprite_sheet->get_sprite(35));
@@ -185,11 +202,6 @@ void KnightEntity::set_state(state_t new_state)
       break;
    case STATE_WALKING_RIGHT:
       velocity.position = vec2d(walk_speed, 0.0);
-      break;
-   case STATE_TAKING_HIT:
-      velocity.position = vec2d(0.0, 0.0);
-      UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, HURT_SOUND_EFFECT);
-      reveal_behavior();
       break;
    }
 }

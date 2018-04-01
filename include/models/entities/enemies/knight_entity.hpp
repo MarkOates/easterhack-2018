@@ -27,7 +27,8 @@ private:
       STATE_WALKING_UP,
       STATE_WALKING_DOWN,
       STATE_WALKING_LEFT,
-      STATE_WALKING_RIGHT
+      STATE_WALKING_RIGHT,
+      STATE_DYING,
    };
 
    SpriteSheet *sprite_sheet;
@@ -41,6 +42,7 @@ private:
    ALLEGRO_BITMAP *knight_bitmap, *identity_bitmap;
    ALLEGRO_COLOR get_identity_color();
    float get_identity_tint_intensity();
+   int health;
 
    void set_state(state_t);
 
