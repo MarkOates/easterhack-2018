@@ -22,6 +22,9 @@ public:
    InventoryScreenRenderComponent(InventoryScreen *inventory_screen, Display *display);
    ~InventoryScreenRenderComponent();
 
+   void set_hilighted(int box_num);
+   void set_selected(int box_num);
+
    void draw();
 };
 

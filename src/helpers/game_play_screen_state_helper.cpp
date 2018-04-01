@@ -42,7 +42,7 @@ void GamePlayScreenStateHelper::process_key_down(int input_button)
       if (input_button == GAMER_BUTTON_DOWN) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_DOWN);
       if (input_button == GAMER_BUTTON_LEFT) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_LEFT);
       if (input_button == GAMER_BUTTON_RIGHT) UserEventEmitter::emit_event(INVENTORY_SCREEN__MOVE_CURSOR_RIGHT);
-      if (input_button == GAMER_BUTTON_A || input_button == GAMER_BUTTON_START) UserEventEmitter::emit_event(INVENTORY_SCREEN__SELECT_ITEM);
+      if (input_button == GAMER_BUTTON_A) UserEventEmitter::emit_event(INVENTORY_SCREEN__SELECT_ITEM);
       if (input_button == GAMER_BUTTON_START) UserEventEmitter::emit_event(CLOSE_INVENTORY_SCREEN);
       break;
    case GamePlayScreen::ITEM_COLLECTED:

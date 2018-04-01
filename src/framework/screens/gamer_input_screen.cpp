@@ -174,6 +174,9 @@ void GamerInputScreen::joy_axis_func()
 {
    float pos = Framework::current_event->joystick.pos;
 
+   //ALLEGRO_EVENT &e = *Framework::current_event;
+   //std::cout << "stick " << e.joystick.stick << " axis: " << e.joystick.axis << " pos: " << e.joystick.pos << std::endl;
+
    if (Framework::current_event->joystick.axis == 0) // left-right
    {
       if (fabs(pos) < 0.5)

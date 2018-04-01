@@ -8,15 +8,17 @@
 
 
 
-InventoryItemRenderComponent::InventoryItemRenderComponent(item_t item_type, float inventory_screen_position_x, float inventory_screen_position_y)
+InventoryItemRenderComponent::InventoryItemRenderComponent(item_t item_type, int box_num, float inventory_screen_position_x, float inventory_screen_position_y)
    : item_type(item_type)
    , inventory_screen_position_x(inventory_screen_position_x)
    , inventory_screen_position_y(inventory_screen_position_y)
    , place(inventory_screen_position_x, inventory_screen_position_y, 80, 80)
    , count(5)
-   , state(STATE_UNSELECTED)
    , sprite_sheet(SPRITES_GRID_FILENAME, SPRITES_GRID_SPRITE_WIDTH, SPRITES_GRID_SPRITE_HEIGHT, SPRITES_GRID_SPRITE_SCALING)
    , bitmap(nullptr)
+   , box_num(box_num)
+   , selected(false)
+   , hilighted(false)
 {
    bitmap.position(place.w/2, place.h/2)
       .align(0.5, 0.5)
@@ -37,16 +39,16 @@ InventoryItemRenderComponent::InventoryItemRenderComponent(item_t item_type, flo
       bitmap.bitmap(sprite_sheet.get_sprite(26));
       break;
    case ITEM_TYPE_SILVER_SHIELD:
-      bitmap.bitmap(sprite_sheet.get_sprite(29));
+      bitmap.bitmap(sprite_sheet.get_sprite(28));
       break;
    case ITEM_TYPE_GOLDEN_SHIELD:
-      bitmap.bitmap(sprite_sheet.get_sprite(30));
+      bitmap.bitmap(sprite_sheet.get_sprite(29));
       break;
    case ITEM_TYPE_SILVER_SWORD:
-      bitmap.bitmap(sprite_sheet.get_sprite(31));
+      bitmap.bitmap(sprite_sheet.get_sprite(30));
       break;
    case ITEM_TYPE_GOLDEN_SWORD:
-      bitmap.bitmap(sprite_sheet.get_sprite(32));
+      bitmap.bitmap(sprite_sheet.get_sprite(31));
       break;
    }
 }
@@ -59,20 +61,23 @@ InventoryItemRenderComponent::~InventoryItemRenderComponent()
 
 
 
-void InventoryItemRenderComponent::set_state(InventoryItemRenderComponent::state_t new_state)
+void InventoryItemRenderComponent::set_selected(bool selected)
 {
-   switch(new_state)
-   {
-   case STATE_UNSELECTED:
-      state = STATE_UNSELECTED;
-      break;
-   case STATE_HILIGHTED:
-      state = STATE_HILIGHTED;
-      break;
-   case STATE_SELECTED:
-      state = STATE_SELECTED;
-      break;
-   }
+   this->selected = selected;
+}
+
+
+
+void InventoryItemRenderComponent::set_hilighted(bool hilighted)
+{
+   this->hilighted = hilighted;
+}
+
+
+
+bool InventoryItemRenderComponent::is_box_num(int box_num)
+{
+   return this->box_num == box_num;
 }
 
 
@@ -81,17 +86,12 @@ void InventoryItemRenderComponent::draw()
 {
    place.start_transform();
 
-   switch(state)
-   {
-   case STATE_UNSELECTED:
-      al_draw_filled_circle(place.w/2, place.h/2, place.h/2, color::midnightblue);
-      break;
-   case STATE_SELECTED:
-   case STATE_HILIGHTED:
-      al_draw_filled_circle(place.w/2, place.h/2, place.h/2, color::yellow);
-      al_draw_circle(place.w/2, place.h/2, place.h/2, color::orange, 3);
-      break;
-   }
+   float circle_radius = place.w/3*2;
+
+   if (selected) al_draw_filled_circle(place.w/2, place.h/2, circle_radius, color::yellow);
+   else al_draw_filled_circle(place.w/2, place.h/2, circle_radius, color::midnightblue);
+
+   if (hilighted) al_draw_circle(place.w/2, place.h/2, circle_radius, color::orange, 9);
 
    bitmap.draw();
 

@@ -126,7 +126,7 @@ void GamePlayScreen::user_event_func()
          break;
       }
       case INVENTORY_SCREEN__MOVE_CURSOR_UP:
-         inventory_screen.show();
+         inventory_screen.move_cursor_up();
          break;
       case INVENTORY_SCREEN__MOVE_CURSOR_DOWN:
          inventory_screen.move_cursor_down();
@@ -190,6 +190,14 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
 
       EntityFactory::create_named_kid(scene, kid.get_name(), kid.get_behavior(), kid.get_sprite_index(), new_kid_x, new_kid_y);
    }
+
+   // create a knight because you can
+   float min_y, max_y;
+   float scene_width = scene->get_width();
+   scene->get_y_bounds(&min_y, &max_y);
+   float new_knight_x = random_float(0, scene->get_width());
+   float new_knight_y = random_float(min_y, max_y);
+   EntityFactory::create_knight_entity(scene, new_knight_x, new_knight_y);
 
    // create AI controllers to control all the enemies
    for (auto &ai_controller : ai_controllers)

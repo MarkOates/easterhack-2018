@@ -25,9 +25,11 @@ private:
    Motion motion;
    float display_counter;
    int rows, columns;
-   int cursor_x, cursor_y;
-   int selector_x, selector_y;
+   int cursor;
+   int selector;
    InventoryScreenRenderComponent inventory_screen_render_component;
+
+   int get_num_items();
 
 public:
    InventoryScreen(Inventory *inventory, Display *display);

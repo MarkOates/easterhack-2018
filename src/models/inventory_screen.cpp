@@ -17,10 +17,8 @@ InventoryScreen::InventoryScreen(Inventory *inventory, Display *display)
    , display_counter(0)
    , rows(2)
    , columns(5)
-   , cursor_x(0)
-   , cursor_y(0)
-   , selector_x(0)
-   , selector_y(0)
+   , cursor(0)
+   , selector(0)
    , inventory_screen_render_component(this, display)
 {
 }
@@ -32,10 +30,17 @@ InventoryScreen::~InventoryScreen()
 
 
 
+int InventoryScreen::get_num_items()
+{
+   return rows * columns;
+}
+
+
+
 int InventoryScreen::get_selected_item()
 {
    if (!inventory) throw std::runtime_error("InventoryScreen: cannot get_selected_item() with a nullptr inventory");
-   return inventory->get_ordered_item(selector_y * columns + selector_x);
+   return inventory->get_ordered_item(selector);
 }
 
 
@@ -57,36 +62,40 @@ void InventoryScreen::hide()
 
 void InventoryScreen::move_cursor_up()
 {
-   cursor_y = (cursor_y - 1 + rows) % rows;
+   cursor = (cursor - columns + get_num_items()) % get_num_items();
+   inventory_screen_render_component.set_hilighted(cursor);
 }
 
 
 
 void InventoryScreen::move_cursor_down()
 {
-   cursor_y = (cursor_y + 1) % rows;
+   cursor = (cursor + columns) % get_num_items();
+   inventory_screen_render_component.set_hilighted(cursor);
 }
 
 
 
 void InventoryScreen::move_cursor_left()
 {
-   cursor_x = (cursor_x - 1 + rows) % rows;
+   cursor = (cursor + 1 + get_num_items()) % get_num_items();
+   inventory_screen_render_component.set_hilighted(cursor);
 }
 
 
 
 void InventoryScreen::move_cursor_right()
 {
-   cursor_x = (cursor_x + 1) % rows;
+   cursor = (cursor - 1 + get_num_items()) % get_num_items();
+   inventory_screen_render_component.set_hilighted(cursor);
 }
 
 
 
 void InventoryScreen::select_item_at_cursor()
 {
-   selector_x = cursor_x;
-   selector_y = cursor_y;
+   selector = cursor;
+   inventory_screen_render_component.set_selected(selector);
 }
 
 

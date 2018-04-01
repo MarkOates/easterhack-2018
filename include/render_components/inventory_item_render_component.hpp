@@ -9,28 +9,24 @@
 
 class InventoryItemRenderComponent
 {
-public:
-   enum state_t
-   {
-      STATE_UNSELECTED,
-      STATE_SELECTED,
-      STATE_HILIGHTED
-   };
-
 private:
    int item_type;
    float inventory_screen_position_x, inventory_screen_position_y;
    placement2d place;
    int count;
-   state_t state;
    SpriteSheet sprite_sheet;
    BitmapObject bitmap;
+   int box_num;
+   int selected;
+   int hilighted;
 
 public:
-   InventoryItemRenderComponent(item_t item_type, float inventory_screen_position_x, float inventory_screen_position_y);
+   InventoryItemRenderComponent(item_t item_type, int box_num, float inventory_screen_position_x, float inventory_screen_position_y);
    ~InventoryItemRenderComponent();
 
-   void set_state(state_t new_state);
+   void set_selected(bool selected=true);
+   void set_hilighted(bool hilighted=true);
+   bool is_box_num(int box_num);
    void draw();
 };
 
