@@ -34,6 +34,7 @@ void PlayerKrampusController::on_key_down(int input_button)
    switch(input_button)
    {
    case GAMER_BUTTON_A: krampus->attack(); break;
+   case GAMER_BUTTON_B: krampus->block(); break;
    case GAMER_BUTTON_C: krampus->use_stone_of_defiance(); break;
    default: break;
    }
@@ -47,6 +48,7 @@ void PlayerKrampusController::on_key_up(int input_button)
 
    switch(input_button)
    {
+   case GAMER_BUTTON_B: krampus->stand_still(); break;
    case GAMER_BUTTON_UP: krampus->stand_still(); break;
    case GAMER_BUTTON_DOWN: krampus->stand_still(); break;
    case GAMER_BUTTON_RIGHT: krampus->stand_still(); break;

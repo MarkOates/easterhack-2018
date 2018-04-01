@@ -16,6 +16,7 @@ public:
       WALKING_DOWN,
       WALKING_RIGHT,
       WALKING_LEFT,
+      BLOCKING,
       STANDING,
       CELEBRATING,
       ATTACKING,
@@ -28,8 +29,10 @@ public:
    int walking_speed;
    bool facing_right;
    bool _has_weapon;
+   bool _has_shield;
    bool _has_stone_of_defiance;
    BitmapObject club_bitmap;
+   BitmapObject shield_bitmap;
    SpriteSheet *sprite_sheet;
 
    bool set_state(state_t new_state, bool override_if_busy=false);
@@ -42,6 +45,7 @@ public:
    void draw() override;
 
    void attack();
+   void block();
    void stand_still();
    void celebrate();
    void walk_up();
@@ -53,10 +57,12 @@ public:
    void use_stone_of_defiance();
 
    void get_weapon();
+   void get_shield();
    void get_stone_of_defiance();
 
    bool is_idle();
    bool has_weapon();
+   bool has_shield();
 };
 
 

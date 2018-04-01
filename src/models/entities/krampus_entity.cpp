@@ -19,6 +19,7 @@ KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float
    , _has_weapon(false)
    , _has_stone_of_defiance(false)
    , club_bitmap(nullptr)
+   , shield_bitmap(nullptr)
    , state(STANDING)
    , sprite_sheet(sprite_sheet)
 {
@@ -31,9 +32,13 @@ KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float
    club_bitmap.bitmap(sprite_sheet->get_sprite(23));
    club_bitmap.align(0.5, 0.95);
 
+   shield_bitmap.bitmap(sprite_sheet->get_sprite(28));
+   shield_bitmap.align(0.5, 0.5);
+
    set("bound_in_world");
 
    set_state(STANDING, true);
+   get_shield();
 }
 
 
@@ -62,6 +67,8 @@ void KrampusEntity::update()
       }
       break;
    case STANDING:
+      break;
+   case BLOCKING:
       break;
    case ATTACKING:
       {
@@ -126,6 +133,7 @@ void KrampusEntity::draw()
    bitmap.start_transform();
    bitmap.draw_raw();
    if (has_weapon()) club_bitmap.draw();
+   if (has_shield()) shield_bitmap.draw();
    bitmap.restore_transform();
    place.restore_transform();
 }
@@ -135,6 +143,13 @@ void KrampusEntity::draw()
 void KrampusEntity::attack()
 {
    set_state(ATTACKING);
+}
+
+
+
+void KrampusEntity::block()
+{
+   set_state(BLOCKING);
 }
 
 
@@ -233,12 +248,21 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
       face_right();
       velocity.position = vec2d(walking_speed, 0.0);
       break;
+   case BLOCKING:
+      bitmap.anchor(0, 0);
+      bitmap.bitmap(sprite_sheet->get_sprite(23));
+      velocity.position = vec2d(0.0, 0.0);
+      shield_bitmap.position(bitmap.w() * 0.7, bitmap.h() * 0.72);
+      shield_bitmap.rotation(-0.07);
+      break;
    case STANDING:
       bitmap.anchor(0, 0);
       bitmap.bitmap(sprite_sheet->get_sprite(18));
       velocity.position = vec2d(0.0, 0.0);
       club_bitmap.position(bitmap.w()/2 + 36, bitmap.h()-20);
       club_bitmap.rotation(FULL_ROTATION * 0.25 - 0.2);
+      shield_bitmap.position(bitmap.w() * 0.3, bitmap.h() * 0.78);
+      shield_bitmap.rotation(0.07);
       break;
    case ATTACKING:
       bitmap.anchor(0, 0);
@@ -247,6 +271,7 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
       velocity.position = vec2d(0.0, 0.0);
       club_bitmap.position(bitmap.w()/2, 10);
       club_bitmap.rotation(FULL_ROTATION * -0.2);
+      shield_bitmap.position(bitmap.w() * 0.3, bitmap.h() * 0.78);
       break;
    case CELEBRATING:
       bitmap.anchor(0, 0);
@@ -277,6 +302,13 @@ void KrampusEntity::get_weapon()
 
 
 
+void KrampusEntity::get_shield()
+{
+   _has_shield = true;
+}
+
+
+
 void KrampusEntity::get_stone_of_defiance()
 {
    _has_stone_of_defiance = true;
@@ -294,6 +326,13 @@ bool KrampusEntity::is_idle()
 bool KrampusEntity::has_weapon()
 {
    return _has_weapon;
+}
+
+
+
+bool KrampusEntity::has_shield()
+{
+   return _has_shield;
 }
 
 
