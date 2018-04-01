@@ -5,6 +5,7 @@
 #include <helpers/scene_collection_helper.hpp>
 #include <helpers/scene_collision_helper.hpp>
 #include <models/scene.hpp>
+#include <entity_attribute_names.hpp>
 #include <algorithm>
 
 
@@ -69,8 +70,10 @@ void Scene::draw_all()
 {
    SceneCollectionHelper collection_helper(this);
 
-   for (auto &entity : collection_helper.get_all_entities_y_sorted())
-      entity->draw();
+   std::vector<EntityBase *> y_sorted_entities = collection_helper.get_all_entities_y_sorted();
+
+   for (auto &entity : y_sorted_entities) if (!entity->exists(ALWAYS_ON_TOP)) entity->draw();
+   for (auto &entity : y_sorted_entities) if (entity->exists(ALWAYS_ON_TOP)) entity->draw();
 }
 
 
