@@ -284,15 +284,24 @@ void GamePlayScreenStateHelper::update_scene()
 
    game_play_screen->scene->update_all();
 
-   // destroy the AI controllers for kids flagged for deletion
+   // destroy the AI controllers for enemies flagged for deletion
+   // OK, there's some unusaly complexity here.  In this instance
+   // we want to be sure that an AIController is deleted from the
+   // enemy if it is flagged for deletion.  Also, we want kids names
+   // to be removed from the list when they're killed as well.  That
+   // should probably be an emitted event
    SceneCollectionHelper collections(game_play_screen->scene);
-   for (auto &kid : collections.get_kids_flagged_for_deletion())
+   for (auto &enemy : collections.get_enemies_flagged_for_deletion())
    {
       // "kill" the kid off from the naughty list
-      game_play_screen->naughty_list.kill_kid_by_name(kid->get_name());
+      if (enemy->exists("type", "kid"))
+      {
+         KidEntity *kid = static_cast<KidEntity *>(enemy);
+         game_play_screen->naughty_list.kill_kid_by_name(kid->get_name());
+      }
 
       // destroy the ai controller
-      game_play_screen->_destroy_ai_controller(kid);
+      game_play_screen->_destroy_ai_controller(enemy);
    }
 
    // now remove all the entities

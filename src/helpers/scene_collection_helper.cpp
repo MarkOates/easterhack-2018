@@ -86,6 +86,18 @@ std::vector<KidEntity *> SceneCollectionHelper::get_kids_flagged_for_deletion()
 
 
 
+std::vector<EnemyBase *> SceneCollectionHelper::get_enemies_flagged_for_deletion()
+{
+   std::vector<EnemyBase* > enemies_flagged_for_deletion;
+
+   for (auto &enemy : get_enemies())
+      if (enemy->exists("can_be_deleted")) enemies_flagged_for_deletion.push_back(enemy);
+
+   return enemies_flagged_for_deletion;
+}
+
+
+
 std::vector<DoorEntity *> SceneCollectionHelper::get_doors()
 {
    return ElementID::recast_collection<DoorEntity>(scene->find_all_descendants("type", "door"));
