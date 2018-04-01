@@ -55,7 +55,7 @@ std::vector<EnemyBase *> SceneCollectionHelper::get_enemies()
 
 
 
-std::vector<DamageZoneEntity *> SceneCollectionHelper::get_damage_zones()
+std::vector<DamageZoneEntity *> SceneCollectionHelper::get_all_damage_zones()
 {
    return ElementID::recast_collection<DamageZoneEntity>(scene->find_all_descendants("type", "damage_zone"));
 }

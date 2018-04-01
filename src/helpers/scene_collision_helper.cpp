@@ -61,7 +61,7 @@ void SceneCollisionHelper::limit_sprites_to_world_bounds()
 void SceneCollisionHelper::check_damage_zones_on_enemies()
 {
    // damage zone <-> enemy collisions
-   for (auto &damage_zone : collections.get_damage_zones())
+   for (auto &damage_zone : collections.get_all_damage_zones())
    {
       for (auto &enemy : collections.get_enemies())
       {
