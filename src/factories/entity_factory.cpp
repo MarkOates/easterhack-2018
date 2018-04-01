@@ -9,6 +9,7 @@
 #include <models/entities/damage_zone_entity.hpp>
 #include <models/entities/item_entity.hpp>
 #include <models/entities/krampus_entity.hpp>
+#include <models/entities/knight_entity.hpp>
 #include <item_type_nums.hpp>
 
 
@@ -67,6 +68,13 @@ KidEntity *EntityFactory::create_named_kid(ElementID *parent, std::string name, 
    if (behavior == BEHAVIOR_NAUGHTY) identity_sprite_index = 28;
    else if (behavior == BEHAVIOR_NICE) identity_sprite_index = 27;
    return new KidEntity(parent, &get_instance()->character_sprite_sheet, &get_instance()->flat_color_shader, x, y, name, behavior, sprite_index, identity_sprite_index);
+}
+
+
+
+KnightEntity *EntityFactory::create_knight_entity(ElementID *parent, float x, float y)
+{
+   return new KnightEntity(parent, &get_instance()->character_sprite_sheet, &get_instance()->flat_color_shader, x, y, "Harold", knight_behavior_t::BEHAVIOR_NORMAL, 32, -1);
 }
 
 
