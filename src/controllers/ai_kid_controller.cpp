@@ -6,7 +6,8 @@
 
 
 AIKidController::AIKidController(KidEntity *kid)
-   : kid(kid)
+   : AIControllerBase(kid)
+   , kid(kid)
    , state_counter(0.0)
 {}
 
@@ -52,13 +53,6 @@ void AIKidController::update()
    state_counter -= 1.0/60.0;
 
    if (state_counter <= 0) set_new_state();
-}
-
-
-
-bool AIKidController::is_controlling(KidEntity *possibly_controlled_kid)
-{
-   return kid == possibly_controlled_kid;
 }
 
 

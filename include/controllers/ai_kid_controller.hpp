@@ -1,12 +1,11 @@
 #pragma once
 
 
-
+#include <controllers/ai_controller_base.hpp>
 #include <models/entities/kid_entity.hpp>
 
 
-
-class AIKidController
+class AIKidController : public AIControllerBase
 {
 private:
    float state_counter;
@@ -18,9 +17,7 @@ private:
 public:
    AIKidController(KidEntity *kid);
 
-   void update();
-   bool is_controlling(KidEntity *possibly_controlled_kid);
+   void update() override;
 };
-
 
 
