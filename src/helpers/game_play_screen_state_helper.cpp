@@ -4,6 +4,7 @@
 #include <helpers/game_play_screen_state_helper.hpp>
 
 #include <framework/screens/gamer_input_screen.hpp>
+#include <controllers/ai_controller_base.hpp>
 #include <emitters/user_event_emitter.hpp>
 #include <factories/dialogue_factory.hpp>
 #include <helpers/scene_collection_helper.hpp>
@@ -278,8 +279,8 @@ void GamePlayScreenStateHelper::update_scene()
 {
    if (!game_play_screen->scene) return;
 
-   for (auto &ai_kid_controller : game_play_screen->ai_kid_controllers)
-      ai_kid_controller.update();
+   for (auto &ai_controller : game_play_screen->ai_controllers)
+      ai_controller->update();
 
    game_play_screen->scene->update_all();
 
@@ -291,10 +292,10 @@ void GamePlayScreenStateHelper::update_scene()
       game_play_screen->naughty_list.kill_kid_by_name(kid->get_name());
 
       // destroy the ai controller
-      game_play_screen->_destroy_ai_kid_controller_for(kid);
+      game_play_screen->_destroy_ai_controller(kid);
    }
 
-   // now remove those entities
+   // now remove all the entities
    game_play_screen->scene->cleanup_all();
 }
 

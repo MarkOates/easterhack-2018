@@ -5,6 +5,9 @@
 
 #include <framework/screens/gamer_input_screen.hpp>
 #include <models/entities/door_entity.hpp>
+#include <controllers/ai_controller_base.hpp>
+#include <controllers/ai_kid_controller.hpp>
+#include <controllers/ai_knight_controller.hpp>
 #include <emitters/user_event_emitter.hpp>
 #include <factories/entity_factory.hpp>
 #include <factories/scene_factory.hpp>
@@ -25,7 +28,7 @@ GamePlayScreen::GamePlayScreen(Display *display, GamerInputScreen *gamer_input_s
    , scene(nullptr)
    , state(NONE)
    , player_krampus_controller()
-   , ai_kid_controllers()
+   , ai_controllers()
    , player_inventory()
    , naughty_list()
    , hud(&player_inventory, &naughty_list)
@@ -188,11 +191,17 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
       EntityFactory::create_named_kid(scene, kid.get_name(), kid.get_behavior(), kid.get_sprite_index(), new_kid_x, new_kid_y);
    }
 
-   // create AI controllers to control the kids
-   ai_kid_controllers.clear();
+   // create AI controllers to control all the enemies
+   for (auto &ai_controller : ai_controllers)
+      delete ai_controller;
+
+   ai_controllers.clear();
 
    for (auto &kid : collections.get_kids())
-      ai_kid_controllers.push_back(AIKidController(kid));
+      ai_controllers.push_back(new AIKidController(kid));
+
+   for (auto &knight : collections.get_knights())
+      ai_controllers.push_back(new AIKnightController(knight));
 
    // equip the KrampusEntity with a weapon (if the player has one)
    if (player_inventory.has_item(ITEM_TYPE_CLUB)) krampus->get_weapon();
@@ -218,12 +227,13 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
 
 
 
-void GamePlayScreen::_destroy_ai_kid_controller_for(KidEntity *kid)
+void GamePlayScreen::_destroy_ai_controller(EntityBase *entity)
 {
-   for (unsigned i=0; i<ai_kid_controllers.size(); i++)
-      if (ai_kid_controllers[i].is_controlling(kid))
+   for (unsigned i=0; i<ai_controllers.size(); i++)
+      if (ai_controllers[i]->is_controlling(entity))
       {
-         ai_kid_controllers.erase(ai_kid_controllers.begin() + i);
+         delete ai_controllers[i];
+         ai_controllers.erase(ai_controllers.begin() + i);
          i--;
       }
 }

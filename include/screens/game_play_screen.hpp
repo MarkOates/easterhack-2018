@@ -5,7 +5,6 @@
 #include <framework/screen.hpp>
 
 #include <controllers/player_krampus_controller.hpp>
-#include <controllers/ai_kid_controller.hpp>
 #include <helpers/game_play_screen_state_helper.hpp>
 #include <models/camera.hpp>
 #include <models/hud.hpp>
@@ -13,6 +12,10 @@
 #include <models/inventory_screen.hpp>
 #include <models/naughty_list.hpp>
 #include <models/scene.hpp>
+
+
+
+class AIControllerBase;
 
 
 
@@ -38,7 +41,7 @@ private:
    state_t state;
    Scene *scene;
    PlayerKrampusController player_krampus_controller;
-   std::vector<AIKidController> ai_kid_controllers;
+   std::vector<AIControllerBase *> ai_controllers;
    Inventory player_inventory;
    NaughtyList naughty_list;
    HUD hud;
@@ -50,7 +53,7 @@ private:
    friend class GamePlayScreenStateHelper;
 
    int _item_recently_collected;
-   void _destroy_ai_kid_controller_for(KidEntity *kid);
+   void _destroy_ai_controller(EntityBase *entity);
 
 public:
    GamePlayScreen(Display *display, GamerInputScreen *gamer_input_screen);
