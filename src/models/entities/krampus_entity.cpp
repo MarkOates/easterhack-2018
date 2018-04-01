@@ -14,6 +14,7 @@
 KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float x, float y)
    : EntityBase(parent, "krampus", x, y)
    , state_is_busy(false)
+   , health(3)
    , walking_speed(5.0)
    , facing_right(true)
    , _has_weapon(false)
@@ -148,6 +149,13 @@ void KrampusEntity::attack()
 
 
 
+void KrampusEntity::take_hit()
+{
+   set_state(TAKING_HIT);
+}
+
+
+
 void KrampusEntity::block()
 {
    set_state(BLOCKING);
@@ -252,6 +260,20 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
       face_right();
       velocity.position = vec2d(walking_speed, 0.0);
       shield_bitmap.flip(true, false);
+      break;
+   case TAKING_HIT:
+      health--;
+      if (health <= 0)
+      {
+         UserEventEmitter::emit_event(PLAYER_DIED_EVENT);
+         velocity.position = vec2d(0.0, 0.0);
+         UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, 0, (intptr_t)(new std::string(KRAMPUS_HIT_SOUND_EFFECT)));
+      }
+      else
+      {
+         velocity.position = vec2d(0.0, 0.0);
+         UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, 0, (intptr_t)(new std::string(KRAMPUS_HIT_SOUND_EFFECT)));
+      }
       break;
    case BLOCKING:
       bitmap.anchor(0, 0);

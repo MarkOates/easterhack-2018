@@ -58,6 +58,10 @@ void GamePlayScreen::user_event_func()
 
    switch (event->user.type)
    {
+      case PLAYER_DIED_EVENT:
+      {
+         set_state(GAME_LOST);
+      }
       case ALLEGRO_EVENT_GAMER_BUTTON_DOWN:
       {
          int user_input = event->user.data1;

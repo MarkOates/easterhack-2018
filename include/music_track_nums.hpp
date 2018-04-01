@@ -17,6 +17,7 @@ enum music_track_t
 
 
 #define FAIL_MOAN_SOUND_EFFECT "menu/menu_open.wav"
+#define KRAMPUS_HIT_SOUND_EFFECT "krampus_hit.ogg"
 
 
 

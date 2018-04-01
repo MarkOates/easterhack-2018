@@ -29,6 +29,7 @@ private:
       GAME_PLAY,
       GAME_LOST,
       GAME_WON,
+      PLAYER_DIED,
       PAUSED,
       ITEM_COLLECTED,
       INVENTORY_SCREEN,

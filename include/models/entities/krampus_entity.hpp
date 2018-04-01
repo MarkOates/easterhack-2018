@@ -20,10 +20,12 @@ public:
       STANDING,
       CELEBRATING,
       ATTACKING,
+      TAKING_HIT,
       USING_MAGIC,
       DEAD
    };
    int state;
+   int health;
    float state_counter;
    bool state_is_busy;
    int walking_speed;
@@ -45,6 +47,7 @@ public:
    void draw() override;
 
    void attack();
+   void take_hit();
    void block();
    void stand_still();
    void celebrate();

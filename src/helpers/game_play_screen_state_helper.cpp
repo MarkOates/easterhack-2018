@@ -252,7 +252,7 @@ void GamePlayScreenStateHelper::draw_state()
    case GamePlayScreen::GAME_LOST:
       {
          if (game_play_screen->scene) draw_scene_with_camera();
-         ItemDialogue dialogue = DialogueFactory::build_dialogue("Game Over\n\nOh no!  Don't hurt the NICE children!  Only the NAUGHTY ones deserve that!");
+         ItemDialogue dialogue = DialogueFactory::build_dialogue("\n\n               Game Over");
          if (_can_bypass_dialogue()) dialogue.set_showing_continue_notification();
          dialogue.draw(0);
          break;
