@@ -10,6 +10,9 @@
 
 Inventory::Inventory()
    : items()
+   , equipped_weapon(0)
+   , equipped_shield(0)
+   , equipped_item(0)
 {}
 
 
@@ -50,6 +53,48 @@ std::string Inventory::get_str()
       result << i << " ";
    }
    return result.str();
+}
+
+
+
+int Inventory::get_equipped_weapon()
+{
+   return equipped_weapon;
+}
+
+
+
+int Inventory::get_equipped_shield()
+{
+   return equipped_shield;
+}
+
+
+
+int Inventory::get_equipped_item()
+{
+   return equipped_item;
+}
+
+
+
+void Inventory::set_equipped_weapon(int item)
+{
+   this->equipped_weapon = item;
+}
+
+
+
+void Inventory::set_equipped_shield(int item)
+{
+   this->equipped_shield = item;
+}
+
+
+
+void Inventory::set_equipped_item(int item)
+{
+   this->equipped_item = item;
 }
 
 
