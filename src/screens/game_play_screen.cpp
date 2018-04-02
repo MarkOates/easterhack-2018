@@ -161,6 +161,24 @@ void GamePlayScreen::user_event_func()
       case INVENTORY_SCREEN__SELECT_ITEM:
          inventory_screen.select_item_at_cursor();
          break;
+      case INVENTORY_SET_SELECTED_WEAPON:
+      {
+         int item_type_int = event->user.data1;
+         player_inventory.set_equipped_weapon(item_type_int);
+         break;
+      }
+      case INVENTORY_SET_SELECTED_SHIELD:
+      {
+         int item_type_int = event->user.data1;
+         player_inventory.set_equipped_shield(item_type_int);
+         break;
+      }
+      case INVENTORY_SET_SELECTED_ITEM:
+      {
+         int item_type_int = event->user.data1;
+         player_inventory.set_equipped_item(item_type_int);
+         break;
+      }
    }
 }
 
