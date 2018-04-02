@@ -1,8 +1,8 @@
 #pragma once
 
 
+#include <models/entities/enemies/kid_entity.hpp>
 #include <controllers/ai_controller_base.hpp>
-#include <models/entities/kid_entity.hpp>
 
 
 class AIKidController : public AIControllerBase

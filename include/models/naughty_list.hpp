@@ -2,7 +2,7 @@
 
 
 
-#include <models/entities/kid_entity.hpp>
+#include <models/entities/enemies/kid_entity.hpp>
 #include <generators/kid_name_generator.hpp>
 #include <string>
 #include <vector>

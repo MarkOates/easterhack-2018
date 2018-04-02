@@ -1,7 +1,7 @@
 
 
 
-#include <models/entities/kid_entity.hpp>
+#include <models/entities/enemies/kid_entity.hpp>
 
 #include <emitters/user_event_emitter.hpp>
 #include <cmath>

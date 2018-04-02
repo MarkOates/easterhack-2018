@@ -2,13 +2,14 @@
 
 
 
+#include <models/entities/enemies/kid_entity.hpp>
 #include <framework/shader.hpp>
-#include <models/entities/entity_base.hpp>
-#include <models/entities/kid_entity.hpp>
 #include <models/sprite_sheet.hpp>
 
 
-
+class ElementID;
+class EntityBase;
+class EnemyBase;
 class KnightEntity;
 
 

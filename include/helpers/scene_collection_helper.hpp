@@ -2,16 +2,16 @@
 
 
 
-#include <models/entities/damage_zone_entity.hpp>
-#include <models/entities/door_entity.hpp>
 #include <models/entities/entity_base.hpp>
 #include <models/entities/item_entity.hpp>
-#include <models/entities/kid_entity.hpp>
 #include <models/entities/krampus_entity.hpp>
 #include <models/scene.hpp>
 
 
 
+class DamageZoneEntity;
+class DoorEntity;
+class KidEntity;
 class EnemyBase;
 class KnightEntity;
 

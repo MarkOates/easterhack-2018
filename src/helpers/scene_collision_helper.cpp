@@ -4,9 +4,10 @@
 #include <helpers/scene_collision_helper.hpp>
 
 #include <emitters/user_event_emitter.hpp>
+#include <models/entities/enemies/kid_entity.hpp>
 #include <models/entities/damage_zone_entity.hpp>
 #include <models/entities/entity_base.hpp>
-#include <models/entities/kid_entity.hpp>
+#include <models/entities/door_entity.hpp>
 #include <models/entities/krampus_entity.hpp>
 #include <helpers/scene_collection_helper.hpp>
 #include <user_events.hpp>

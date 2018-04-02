@@ -5,6 +5,9 @@
 
 #include <models/entities/enemies/enemy_base.hpp>
 #include <models/entities/enemies/knight_entity.hpp>
+#include <models/entities/enemies/kid_entity.hpp>
+#include <models/entities/damage_zone_entity.hpp>
+#include <models/entities/door_entity.hpp>
 #include <entity_attribute_names.hpp>
 
 
