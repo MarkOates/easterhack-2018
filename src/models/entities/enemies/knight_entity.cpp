@@ -6,6 +6,7 @@
 #include <emitters/user_event_emitter.hpp>
 #include <factories/entity_factory.hpp>
 #include <cmath>
+#include <motion_fx_type_names.hpp>
 #include <music_track_nums.hpp>
 #include <user_events.hpp>
 
@@ -180,6 +181,7 @@ void KnightEntity::set_state(state_t new_state)
       {
          velocity.position = vec2d(0.0, 0.0);
          UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, 0, (intptr_t)(new std::string(METAL_KLANK_SOUND_EFFECT)));
+         UserEventEmitter::emit_event(SPAWN_MOTION_FX, (intptr_t)(new std::string(MOTION_FX_DAMAGE_HIT)), place.position.x, place.position.y, (intptr_t)(new std::string("HIT!")));
          reveal_behavior();
       }
       break;

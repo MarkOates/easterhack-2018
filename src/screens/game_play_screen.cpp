@@ -13,6 +13,7 @@
 #include <factories/scene_factory.hpp>
 #include <helpers/scene_collection_helper.hpp>
 #include <item_type_nums.hpp>
+#include <motion_fx_type_names.hpp>
 #include <music_track_nums.hpp>
 #include <user_events.hpp>
 
