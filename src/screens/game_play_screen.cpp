@@ -91,18 +91,6 @@ void GamePlayScreen::user_event_func()
          enter_scene(scene_id, destination_door_name[0]);
          break;
       }
-      case OPEN_INVENTORY_SCREEN:
-      {
-         inventory_screen.show();
-         set_state(INVENTORY_SCREEN);
-         break;
-      }
-      case CLOSE_INVENTORY_SCREEN:
-      {
-         inventory_screen.hide();
-         set_state(GAME_PLAY);
-         break;
-      }
       case SPAWN_MOTION_FX:
       {
          std::string *type = (std::string *)event->user.data1;
@@ -130,6 +118,7 @@ void GamePlayScreen::user_event_func()
             SceneCollectionHelper collections(scene);
             KrampusEntity *krampus = collections.get_krampus();
             krampus->get_weapon();
+            UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, 0, (intptr_t)(new std::string(SWORD_SCHLING_SOUND_EFFECT)));
          }
          else if (item_type_int == ITEM_TYPE_STONE_OF_DEFIANCE)
          {
@@ -144,6 +133,18 @@ void GamePlayScreen::user_event_func()
       case USE_STONE_OF_DEFIANCE_EVENT:
       {
          set_state(USING_STONE_OF_DEFIANCE);
+         break;
+      }
+      case OPEN_INVENTORY_SCREEN:
+      {
+         inventory_screen.show();
+         set_state(INVENTORY_SCREEN);
+         break;
+      }
+      case CLOSE_INVENTORY_SCREEN:
+      {
+         inventory_screen.hide();
+         set_state(GAME_PLAY);
          break;
       }
       case INVENTORY_SCREEN__MOVE_CURSOR_UP:
@@ -161,19 +162,19 @@ void GamePlayScreen::user_event_func()
       case INVENTORY_SCREEN__SELECT_ITEM:
          inventory_screen.select_item_at_cursor();
          break;
-      case INVENTORY_SET_SELECTED_WEAPON:
+      case INVENTORY_EQUIP_WEAPON:
       {
          int item_type_int = event->user.data1;
          player_inventory.set_equipped_weapon(item_type_int);
          break;
       }
-      case INVENTORY_SET_SELECTED_SHIELD:
+      case INVENTORY_EQUIP_SHIELD:
       {
          int item_type_int = event->user.data1;
          player_inventory.set_equipped_shield(item_type_int);
          break;
       }
-      case INVENTORY_SET_SELECTED_ITEM:
+      case INVENTORY_EQUIP_ITEM:
       {
          int item_type_int = event->user.data1;
          player_inventory.set_equipped_item(item_type_int);

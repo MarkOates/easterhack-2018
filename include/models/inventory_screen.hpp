@@ -27,7 +27,11 @@ private:
    int rows, columns;
    int cursor;
    int selector;
-   InventoryScreenRenderComponent inventory_screen_render_component;
+   Display *display;
+   FontBin fonts;
+   TextObject title;
+   std::vector<InventoryItemRenderComponent *> item_render_components;
+   //InventoryScreenRenderComponent inventory_screen_render_component;
 
    int get_num_items();
 
@@ -44,6 +48,9 @@ public:
    void move_cursor_left();
    void move_cursor_right();
    void select_item_at_cursor();
+
+   void hilight(int index);
+   void select(int index);
 
    void update(float time_now);
    void draw(Display *display);

@@ -20,8 +20,8 @@ KnightEntity::state_t AIKnightController::_get_a_random_state()
          KnightEntity::STATE_STANDING_STILL,
          KnightEntity::STATE_WALKING_UP,
          KnightEntity::STATE_WALKING_DOWN,
-         KnightEntity::STATE_WALKING_LEFT,
-         KnightEntity::STATE_WALKING_RIGHT
+         //KnightEntity::STATE_WALKING_LEFT,
+         //KnightEntity::STATE_WALKING_RIGHT
       };
 
    if (possible_states.size() <= 1) throw std::runtime_error("AIKnightController::_get_a_random_state() cannot contain 1 or fewer items.");

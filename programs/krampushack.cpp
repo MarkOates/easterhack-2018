@@ -26,6 +26,7 @@ public:
       , gamer_input_screen(display)
    {
       UserEventEmitter::emit_event(START_TITLE_SCREEN);
+      gamer_input_screen.show_graphic = true;
    }
 
    void user_event_func() override

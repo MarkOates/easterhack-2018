@@ -22,24 +22,40 @@ InventoryScreenRenderComponent::InventoryScreenRenderComponent(InventoryScreen *
    title.font(font)
       .align(0.5, 1.1)
       .scale(1, 1)
-      .position(display->center(), display->middle()-100);
+      .position(display->center(), display->middle()-200);
 
    int spacing = 150;
+   float row_y = 270;
+   float row_spacing = 150;
    int center = display->width() / 2;
-   int top_row = display->height() / 6 * 3;
-   int bottom_row = display->height() / 6 * 4;
+   //int top_row = display->height() / 6 * 3;
+   //int bottom_row = display->height() / 6 * 4;
 
-   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_CLUB, 0, center - spacing*-2, top_row));
-   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_STONE_OF_DEFIANCE, 1, center - spacing*-1, top_row));
-   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_NAUGHTY_LIST, 2, center - spacing*+0, top_row));
-   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_SILVER_SHIELD, 3, center - spacing*+1, top_row));
-   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_GOLDEN_SHIELD, 4, center - spacing*+2, top_row));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_CLUB, center + spacing*-3, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_CLUB, center + spacing*-2, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_STONE_OF_DEFIANCE, center + spacing*-1, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_NAUGHTY_LIST, center + spacing*+0, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_SILVER_SHIELD, center + spacing*+1, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_GOLDEN_SHIELD, center + spacing*+2, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_NONE, center + spacing*+3, row_y));
 
-   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_SILVER_SWORD, 5, center - spacing*-2, bottom_row));
-   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_GOLDEN_SWORD, 6, center - spacing*-1, bottom_row));
-   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_KEY, 7, center - spacing*+0, bottom_row));
-   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_NONE, 8, center - spacing*+1, bottom_row));
-   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_NONE, 9, center - spacing*+2, bottom_row));
+   row_y += row_spacing;
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_CLUB, center + spacing*-3, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_SILVER_SWORD, center + spacing*-2, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_GOLDEN_SWORD, center + spacing*-1, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_KEY, center + spacing*+0, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_NONE, center + spacing*+1, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_NONE, center + spacing*+2, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_NONE, center + spacing*+3, row_y));
+
+   row_y += row_spacing;
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_CLUB, center + spacing*-3, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_SILVER_SWORD, center + spacing*-2, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_GOLDEN_SWORD, center + spacing*-1, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_KEY, center + spacing*+0, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_NONE, center + spacing*+1, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_NONE, center + spacing*+2, row_y));
+   item_render_components.push_back(new InventoryItemRenderComponent(ITEM_TYPE_NONE, center + spacing*+3, row_y));
 }
 
 
@@ -49,22 +65,24 @@ InventoryScreenRenderComponent::~InventoryScreenRenderComponent()
 }
 
 
-void InventoryScreenRenderComponent::set_hilighted(int box_num)
+void InventoryScreenRenderComponent::hilight(int index)
 {
-   for (auto &item_render_component : item_render_components)
+   for (unsigned i=0; i<item_render_components.size(); i++)
    {
-      if (item_render_component->is_box_num(box_num)) item_render_component->set_hilighted();
-      else item_render_component->set_hilighted(false);
+      InventoryItemRenderComponent &item_render_component = *item_render_components[i];
+      if (i == index) item_render_component.hilight();
+      else item_render_component.unhilight();
    }
 }
 
 
-void InventoryScreenRenderComponent::set_selected(int box_num)
+void InventoryScreenRenderComponent::select(int index)
 {
-   for (auto &item_render_component : item_render_components)
+   for (unsigned i=0; i<item_render_components.size(); i++)
    {
-      if (item_render_component->is_box_num(box_num)) item_render_component->set_selected();
-      else item_render_component->set_selected(false);
+      InventoryItemRenderComponent &item_render_component = *item_render_components[i];
+      if (i == index) item_render_component.select();
+      else item_render_component.unselect();
    }
 }
 

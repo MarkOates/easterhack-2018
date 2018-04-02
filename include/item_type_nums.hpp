@@ -24,3 +24,7 @@ enum item_t
 
 
 
+int get_item_sprite_num(int item_num);
+
+
+

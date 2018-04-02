@@ -2,6 +2,7 @@
 
 
 
+#include <framework/objects/bitmap_object.hpp>
 #include <models/inventory.hpp>
 #include <models/naughty_list.hpp>
 #include <models/sprite_sheet.hpp>
@@ -28,16 +29,18 @@ private:
    ALLEGRO_FONT *font;
    ALLEGRO_FONT *font_bigger;
    SpriteSheet sprite_sheet;
-   BitmapObject club_item_bitmap;
-   BitmapObject key_item_bitmap;
-   BitmapObject stone_of_defiance_item_bitmap;
-   BitmapObject naughty_list_item_bitmap;
+   BitmapObject weapon_bitmap;
+   BitmapObject shield_bitmap;
+   BitmapObject item_bitmap;
    float black_bar_counter;
 
 public:
    HUD(Inventory *player_inventory, NaughtyList *naughty_list);
 
    void set_values(int player_health, int player_max_health);
+   void set_weapon(ALLEGRO_BITMAP *bmp);
+   void set_shield(ALLEGRO_BITMAP *bmp);
+   void set_item(ALLEGRO_BITMAP *bmp);
 
    void update();
    void draw();

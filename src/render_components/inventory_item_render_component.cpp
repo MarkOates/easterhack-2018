@@ -5,10 +5,11 @@
 
 #include <allegro5/allegro_primitives.h>
 #include <framework/color.hpp>
+#include <cmath>
 
 
 
-InventoryItemRenderComponent::InventoryItemRenderComponent(item_t item_type, int box_num, float inventory_screen_position_x, float inventory_screen_position_y)
+InventoryItemRenderComponent::InventoryItemRenderComponent(item_t item_type, float inventory_screen_position_x, float inventory_screen_position_y)
    : item_type(item_type)
    , inventory_screen_position_x(inventory_screen_position_x)
    , inventory_screen_position_y(inventory_screen_position_y)
@@ -16,7 +17,6 @@ InventoryItemRenderComponent::InventoryItemRenderComponent(item_t item_type, int
    , count(5)
    , sprite_sheet(SPRITES_GRID_FILENAME, SPRITES_GRID_SPRITE_WIDTH, SPRITES_GRID_SPRITE_HEIGHT, SPRITES_GRID_SPRITE_SCALING)
    , bitmap(nullptr)
-   , box_num(box_num)
    , selected(false)
    , hilighted(false)
 {
@@ -50,6 +50,8 @@ InventoryItemRenderComponent::InventoryItemRenderComponent(item_t item_type, int
    case ITEM_TYPE_GOLDEN_SWORD:
       bitmap.bitmap(sprite_sheet.get_sprite(31));
       break;
+   default:
+      break;
    }
 }
 
@@ -61,23 +63,37 @@ InventoryItemRenderComponent::~InventoryItemRenderComponent()
 
 
 
-void InventoryItemRenderComponent::set_selected(bool selected)
+int InventoryItemRenderComponent::get_item_type()
 {
-   this->selected = selected;
+   return item_type;
 }
 
 
 
-void InventoryItemRenderComponent::set_hilighted(bool hilighted)
+void InventoryItemRenderComponent::select()
 {
-   this->hilighted = hilighted;
+   this->selected = true;
 }
 
 
 
-bool InventoryItemRenderComponent::is_box_num(int box_num)
+void InventoryItemRenderComponent::hilight()
 {
-   return this->box_num == box_num;
+   this->hilighted = true;
+}
+
+
+
+void InventoryItemRenderComponent::unselect()
+{
+   this->selected = false;
+}
+
+
+
+void InventoryItemRenderComponent::unhilight()
+{
+   this->hilighted = false;
 }
 
 
@@ -91,7 +107,7 @@ void InventoryItemRenderComponent::draw()
    if (selected) al_draw_filled_circle(place.w/2, place.h/2, circle_radius, color::yellow);
    else al_draw_filled_circle(place.w/2, place.h/2, circle_radius, color::midnightblue);
 
-   if (hilighted) al_draw_circle(place.w/2, place.h/2, circle_radius, color::orange, 9);
+   if (hilighted) al_draw_circle(place.w/2, place.h/2, circle_radius + 5 + 4.0 * std::sin(al_get_time() * 6), color::orange, 9);
 
    bitmap.draw();
 

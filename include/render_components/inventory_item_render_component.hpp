@@ -16,17 +16,20 @@ private:
    int count;
    SpriteSheet sprite_sheet;
    BitmapObject bitmap;
-   int box_num;
    int selected;
    int hilighted;
 
 public:
-   InventoryItemRenderComponent(item_t item_type, int box_num, float inventory_screen_position_x, float inventory_screen_position_y);
+   InventoryItemRenderComponent(item_t item_type, float inventory_screen_position_x, float inventory_screen_position_y);
    ~InventoryItemRenderComponent();
 
-   void set_selected(bool selected=true);
-   void set_hilighted(bool hilighted=true);
-   bool is_box_num(int box_num);
+   int get_item_type();
+
+   void select();
+   void hilight();
+   void unselect();
+   void unhilight();
+
    void draw();
 };
 
