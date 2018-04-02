@@ -102,6 +102,22 @@ void GamePlayScreen::user_event_func()
          set_state(GAME_PLAY);
          break;
       }
+      case SPAWN_MOTION_FX:
+      {
+         std::string *type = (std::string *)event->user.data1;
+
+         if (*type == MOTION_FX_DAMAGE_HIT)
+         {
+            int x = event->user.data2;
+            int y = event->user.data3;
+            std::string *damage_string = (std::string *)event->user.data4;
+            EntityFactory::create_hit_damage_motion_fx(scene, x, y, *damage_string);
+            delete damage_string;
+         }
+
+         delete type;
+         break;
+      }
       case COLLECT_ITEM_EVENT:
       {
          int item_type_int = event->user.data1;

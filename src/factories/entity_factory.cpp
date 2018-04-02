@@ -4,6 +4,7 @@
 #include <framework/framework.hpp>
 #include <framework/image_processing.hpp>
 #include <factories/entity_factory.hpp>
+#include <models/entities/motion_fx/motion_fx_hit_damage.hpp>
 #include <models/entities/enemies/knight_entity.hpp>
 #include <models/entities/background_entity.hpp>
 #include <models/entities/door_entity.hpp>
@@ -215,6 +216,13 @@ EntityBase *EntityFactory::create_naughty_list_item(ElementID *parent, float x, 
 EntityBase *EntityFactory::create_key_item(ElementID *parent, float x, float y)
 {
    return new ItemEntity(parent, get_instance()->character_sprite_sheet.get_sprite(26), ITEM_TYPE_KEY, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_hit_damage_motion_fx(ElementID *parent, float x, float y, std::string damage_string)
+{
+   return new MotionFXHitDamage(parent, x, y, damage_string);
 }
 
 
